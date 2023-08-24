@@ -1,0 +1,78 @@
+.timebar {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  font-family: "Calibri", sans-serif;
+}
+
+.year-bar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.slider {
+  width: 100%;
+  appearance: none;
+  height: 8px;
+  background: #e2e2e2;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  border-radius: 4px;
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #1c7501;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #c1c7c1;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.year-indicator {
+  font-size: 20px;
+  margin-left: 15px;
+  color: #000000;
+}
+
+.month-buttons {
+  display: flex;
+  margin-top: 15px;
+  gap: 20px; /* Increased space between buttons */
+
+}
+
+.month-buttons button {
+  font-family: sans-serif; /* Set the font family */
+  font-size: 14px; /* Set the font size */
+  font-weight: bold; 
+  padding: 8px 12px;
+  background-color: #1c7501;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Selected state */
+.month-buttons button.selected {
+  background-color: #072c00;
+}
+
+.month-buttons button:hover {
+  background-color: #7cbb71;
+  color: white;
+}

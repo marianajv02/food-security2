@@ -1,0 +1,80 @@
+.sidebar {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #000000;
+  padding: 6px 12px;
+  font-family: "Calibri", sans-serif;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 12px;
+  border-radius: 4px;
+}
+
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  width: 300px;
+  height: 600px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-icon {
+  width: 24px;
+  height: 24px;
+  fill: #05681e; /* Green color for the logo icon */
+  margin-right: 10px;
+}
+
+.logo-text {
+  font-size: 25px;
+  font-weight: bold;
+  color: #05681e; /* Green color for the logo text */
+  font-family: 'Calibri', sans-serif;
+}
+
+.region-info {
+  background-color: #f8f8f8;
+  padding: 10px;
+  border-radius: 5px;
+  width: 270px;
+  height: 300px;
+  position: absolute;
+  top: 170px; /* Adjust this value to move the element down */
+  left: 15px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+
+}
+
+.region-info h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.region-info .info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.region-info h4 {
+  font-size: 18px;
+  color: #05681e;
+  margin-right: 10px;
+  margin-bottom: 3px;
+}
+
+.region-info p {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 3px;
+}
+

@@ -1,0 +1,25 @@
+
+
+.view-container{
+  height: 80vh;
+  fill: #05681e;
+  z-index: 1;
+}
+
+.map-container {
+    height: 620px ;
+
+  }
+  
+  .map {
+    height: 80vh;
+
+  }
+  
+
+  #features {
+    top: 0;
+    height: 100px;
+    margin-top: 20px;
+    width: 250px;
+  }
