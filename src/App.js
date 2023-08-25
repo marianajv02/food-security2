@@ -6,7 +6,7 @@ import Table from './components/Table';
 export default function App() {
     const [countryData, setCountryData] = useState(null);
     const [level1Data, setLevel1Data] = useState(null);
-    const [level2Data, setLevel2Data] = useState(null);
+    const [level2Data, setLevel2Data] = useState(null);//for diff layers
 
     useEffect(() => {
         async function fetchData() {
