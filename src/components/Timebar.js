@@ -1,10 +1,14 @@
+
 import React, { useState } from 'react';
 import './Timebar.css';
+import MapView from './MapView';
+import Sidebar from './Sidebar';
 
-const Timebar = ({ onChangeYear }) => {
+const Timebar = ({ onChangeYear, onChangeMonth }) => {
   const minYear = 2014;
   const maxYear = 2023;
   const [selectedYear, setSelectedYear] = useState(maxYear);
+  const [selectedMonth, setSelectedMonth] = useState(null);
 
   const handleSliderChange = (event) => {
     const yearRange = maxYear - minYear;
@@ -23,10 +27,18 @@ const Timebar = ({ onChangeYear }) => {
       November: 11,
     };
 
-
+    const monthNumber = monthMap[month];
+    if (monthNumber !== undefined) {
+      setSelectedMonth(monthNumber);
+      if (onChangeMonth) {
+        onChangeMonth(monthNumber);
+      }
+    }
   };
 
   return (
+    
+    
     <div className="timebar">
       <div className="year-bar">
         <input

@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
 import './Sidebar.css';
-import Timebar from './Timebar';
+import App from '../App';
 
-function Sidebar({ regionInfo }) {
+function Sidebar({ regionInfo, selectedYear}) {
+    console.log('Sidebar Received regionInfo:', regionInfo);
+
+
     return (
         <nav className='sidebar'>
             <div className='sidebar-container'>
                 <div className='logo'>
                     <img src='/images/family_icon.jpg' alt='Family Icon' />
-                    <span className='logo-text'>Situation alimentaire et nutritionelle</span>
-                </div>
-                <div><Timebar /></div>
+                    
+                    <span className='logo-text'>Situation alimentaire et nutritionelle {selectedYear}</span>
+                    </div>
+                    
+                
+
+
                 <div className='region-info'>
                     {/* Display information about the hovered region */}
                     {regionInfo && (

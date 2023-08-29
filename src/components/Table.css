@@ -1,10 +1,10 @@
 /* Table.css */
 .table-container {
-    margin: 50px;
+    margin: 10px;
     font-family: Calibri, sans-serif;
     position: absolute;
-    
-    left:350px;
+    left:50vh;
+    top:70vh;
   }
   
   table {
@@ -54,3 +54,11 @@
     color: white;
   }
   
+
+  .table-wrapper {
+    margin: 0 20px; /* Add margin to create space between tables */
+  }
+  
+  .table-spacing {
+    width: 400px; /* Adjust the width to control the spacing */
+  }

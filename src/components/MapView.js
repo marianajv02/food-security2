@@ -1,10 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import Sidebar from './Sidebar';
 import Legend from './Legend';
-import Table from './Table';
+import App from '../App';
 import './MapView.css';
+import Sidebar from './Sidebar';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFyaWFuYWp2LSIsImEiOiJjbGs3eXJmbzEwYXR3M2RxbnRuOHVkaHV3In0.rVa0wb_O5OTeuk07J90w5A';
 
@@ -15,10 +15,10 @@ function MapView() {
   const [lat, setLat] = useState(17);
   const [zoom, setZoom] = useState(3.4);
   const [hoveredRegion, setHoveredRegion] = useState(null);
-  const [selectedYear, setSelectedYear] = useState(2023); 
-  const [selectedMonth, setSelectedMonth] = useState(3);
 
   useEffect(() => {
+    
+    
     if (map.current) return; 
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
@@ -37,12 +37,14 @@ function MapView() {
     let popup=null;
 
     layerNames.forEach(layerName => {
-      map.current.on('mouseenter', layerName, (e) => {
+      map.current.on('click', layerName, (e) => {
+        console.log('Mouse entered country layer');
         const feature = e.features[0];
         const lngLat = e.lngLat;
+      
 
         setHoveredRegion({
-          name: feature.properties['Name_2'],
+          name: feature.properties['Name_2'], //Later also change date according to timebar
           population: feature.properties['POP-2023-03'],
           phase1: feature.properties['PH1-2023-03'],
           phase2: feature.properties['PH2-2023-03'],
@@ -50,6 +52,7 @@ function MapView() {
           phase4: feature.properties['PH4-2023-03'],
           phase5: feature.properties['PH5-2023-03']
         });
+
 
         if (popup) {
           popup.remove();
@@ -65,24 +68,24 @@ function MapView() {
         .addTo(map.current);
       });
 
-      map.current.on('mouseleave', layerName, () => {
-        map.current.getCanvas().style.cursor = '';
-        setHoveredRegion(null);
+      //map.current.on('mouseleave', layerName, () => {
+       // map.current.getCanvas().style.cursor = '';
+        //setHoveredRegion(null);
 
-        if (popup) {
-          popup.remove();
-          popup = null;
-        }
-      });
+        //if (popup) {
+        //  popup.remove();
+        //  popup = null;
+       // }
+      //});
     });
-  }, []);
+  }, [hoveredRegion, lat, lng, zoom]);
 
   return (
     <div className='view-container'>
+      
       <div ref={mapContainer} className="map-container" />
-      <Sidebar/>
-      <div><Table></Table></div>
-      <Sidebar regionInfo={hoveredRegion} /> {/* Pass regionInfo here */}
+      <Sidebar regionInfo={hoveredRegion}/>
+
       <Legend/>
     </div>
     

@@ -1,9 +1,13 @@
 .timebar {
+  position:absolute;
   display: flex;
+  bottom:760px;
+  left: 25px;
   align-items: center;
   flex-direction: column;
   padding: 20px;
   font-family: "Calibri", sans-serif;
+  z-index: 3;
 }
 
 .year-bar {
