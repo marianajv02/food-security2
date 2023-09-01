@@ -2,8 +2,8 @@ import React from 'react';
 import './Legend.css';
 
 function Legend() {
-    const layers = ['Phase 1', 'Phase 2', 'Phase 3', 'Phase 4', 'No data'];
-    const colors = ['#53ca57', '#ffe252', '#fa890f', '#eb3333', '#ffffff'];
+    const layers = ['Phase 1', 'Phase 2', 'Phase 3', 'Phase 4', 'Phase 5', 'No data'];
+    const colors = ['#53ca57', '#ffe252', '#fa890f', '#eb3333', '#900101e3','#ffffff'];
 
     return (
         <nav className='legend'>

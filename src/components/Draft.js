@@ -1,83 +1,70 @@
-  'use strict';
+import React, { useState } from 'react';
+import { AgGridReact } from 'ag-grid-react';
+import App from '../App';
+import Timebar from './Timebar';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
-import React, { useCallback, useMemo, useState } from 'react';
-import { AgGridReact } from 'ag-grid-react';
-import './Draft.css';
+import './DraftRow.css';
 
-
-const Draft = ({level2Data}) => {
-    console.log(level2Data)
-  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
-  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
-  const [rowData, setRowData] = useState();
-  const [columnDefs, setColumnDefs] = useState([
-    { field: 'Country', rowGroupIndex: 0, hide: false },
-    { field: 'L1', rowGroupIndex: 1, hide: false  },
-    
-    {
-      field: 'L2',
-      minWidth: 250,
-      cellRenderer: (params) => {
-        return <span style={{ marginLeft: 60 }}>{params.value}</span>;
-      },
-    },
-    { field: 'Populaton', minWidth: 200 },
-  ]);
-
-  const defaultColDef = useMemo(() => {
-    return {
-      flex: 1,
-      minWidth: 100,
-      sortable: true,
-      resizable: true,
-    };
-  }, []);
-
-
-  if (!level2Data) {
-    return null; // Render nothing while data is being fetched
-  }
-
-  const onGridReady = () => {
-    if (level2Data && level2Data.features) {
-      const extractedData = level2Data.features.map(feature => ({
-        Country: feature.properties['Country'],
-        L1: feature.properties['Name_1'], 
-        L2: feature.properties['Name_2'],
-        Population: formatNumber(feature.properties[`POP-2023-03`])
-      }));
-      setRowData(extractedData);
-    } else {
-      console.log("Invalid level2Data or missing features array.");
-    }
-  };
+const Draft = ({ countryData, selectedYear }) => {
   
-
+  const [columnDefs, setColumnDefs] = useState([
+    { field: 'Country', rowgroup: true, hide: false, headerClass: 'custom-header', width: 100  },
+    { field: 'L1', headerClass: 'custom-header',width: 100  },
+    { field: 'L2', headerClass: 'custom-header',width: 100  },
+    { field: 'Population', headerClass: 'custom-header',width: 120  },
+    { field: 'Phase 1', headerClass: 'custom-header1',width: 90 },
+    { field: 'Phase 2', headerClass: 'custom-header2',width: 90  },
+    { field: 'Phase 3', headerClass: 'custom-header3',width: 90  },
+    { field: 'Phase 4', headerClass: 'custom-header4',width: 90  },
+    { field: 'Phase 5', headerClass: 'custom-header5',width: 90  },
+    { field: 'Phase 3-5', headerClass: 'custom-header5',width: 100  },
+    { field: '%', headerClass: 'custom-header5',width: 60  }
+  ]);
+  
+    if (!countryData) {
+      return null; // Render nothing while data is being fetched
+    }
+  
+    const rowData = countryData.features.map(feature => {
+      return {
+        Country: feature.properties['Country'],
+        L1: feature.properties[''], 
+        L2: feature.properties[''],
+        Population: formatNumber(feature.properties[`POP-${selectedYear}-03`]),
+        'Phase 1': formatNumber(feature.properties[`PH1-${selectedYear}-03`]) ,
+        'Phase 2': formatNumber(feature.properties[`PH2-${selectedYear}-03`]) ,
+        'Phase 3': formatNumber(feature.properties[`PH3-${selectedYear}-03`]),
+        'Phase 4': formatNumber(feature.properties[`PH4-${selectedYear}-03`]),
+        'Phase 5': formatNumber(feature.properties[`PH5-${selectedYear}-03`]),
+        'Phase 3-5': formatNumber(feature.properties[`PH3:5-${selectedYear}-03`]),  
+        '%': calculatePercentage((feature.properties[`PH3:5-${selectedYear}-03`]) ,(feature.properties[`POP-${selectedYear}-03`]))
+      };
       
+    });
     
-  return (
-    <div style={containerStyle}>
-      <div style={gridStyle} className="ag-theme-alpine">
-        <AgGridReact
-          rowData={rowData}
-          columnDefs={columnDefs}
-          defaultColDef={defaultColDef}
-          groupDisplayType={'groupRows'}
-          animateRows={true}
-          onGridReady={onGridReady}
-        />
-      </div>
-    </div>
-  );
-};
 
-function formatNumber(number) {
+
+    const groupDisplayType = 'groupRows';
+  
+    return (
+      <div className="ag-theme-alpine" >
+        <AgGridReact rowData={rowData}  groupDisplayType={groupDisplayType} columnDefs={columnDefs} />
+      </div>
+    );
+  };
+
+  function formatNumber(number) {
     if (number === null) {
         return '0'; // Return '0' as a string or 0 if you prefer a number
     }
     
     return number.toLocaleString('en-US', { maximumFractionDigits: 0 });
   }
-
-export default Draft;
+  
+  function calculatePercentage(value, total) {
+    const percentage = (value / total) * 100;
+    return percentage.toFixed(2); // Displaying percentage with two decimal places
+}
+  
+  export default Draft;

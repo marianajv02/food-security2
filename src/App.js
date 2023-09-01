@@ -6,6 +6,7 @@ import Timebar from './components/Timebar';
 import Sidebar from './components/Sidebar';
 import Draft from './components/Draft';
 import Mapfilter from './components/Mapfilter';
+import DraftRow from './components/DraftRow';
 
 export default function App() {
     const [countryData, setCountryData] = useState(null);
@@ -16,9 +17,14 @@ export default function App() {
     const handleYearChange = (year) => {
       setSelectedYear(year);
     };
+    const handleRegionChange= (region) => { 
+      setHoveredRegion(region);
+      
+    };
+    
   
 
-    useEffect(() => {
+    useEffect(() => { //la data de draft si cambia porque esta dentro de UseEffect
         async function fetchData() {
           try {
             const responseCountry = await axios.get('/data/output_country.geojson');
@@ -37,21 +43,18 @@ export default function App() {
         fetchData();
       }, []);
 
-      
-    
     
 
   return (
     <div>
-      <MapView regionInfo={hoveredRegion}/>
+      <MapView regionInfo={hoveredRegion} onChangeYear={handleYearChange} onChangeRegion={handleRegionChange} selectedYear={selectedYear}/>
       
       <Timebar onChangeYear={handleYearChange} selectedYear={selectedYear} />
-      {/*<Sidebar regionInfo={hoveredRegion} onChangeYear={handleYearChange} selectedYear={selectedYear}/> */}
+      <Sidebar countryData={countryData} regionInfo={hoveredRegion} onChangeYear={handleYearChange} selectedYear={selectedYear} /> 
       <Mapfilter/>
-      <Table countryData={countryData} level1Data={level1Data} level2Data={level2Data} onChangeYear={handleYearChange} selectedYear={selectedYear}/>
-      {/*<Draft countryData={countryData} level1Data={level1Data} level2Data={level2Data} onChangeYear={handleYearChange} selectedYear={selectedYear}/>*/}
-      
-       
+      <div><Draft countryData={countryData} level1Data={level1Data} level2Data={level2Data} onChangeYear={handleYearChange} selectedYear={selectedYear}/></div>
+
+    
       
 
     </div>
