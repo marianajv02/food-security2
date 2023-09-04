@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import StaticFilterOptions from "./StaticFilterOptions";
 import axios from "axios";
 import "./Mapfilter.css";
+import { feature } from "@turf/turf";
+import App from "../App";
 
-const Mapfilter = () => {
+const Mapfilter = ({ handleFilteredDataChange, countryData, level1Data, level2Data }) => {
+
   const [filterCountry, setFilterCountry] = useState([]);
   const [level1Filter, setLevel1Filter] = useState([]);
   const [level2Filter, setLevel2Filter] = useState([]);
@@ -24,7 +27,7 @@ const Mapfilter = () => {
         const countries = response.data.features.map(
           (feature) => feature.properties.Country
         );
-        setCountryOptions(countries);
+        setCountryOptions(countries); 
       })
       .catch((error) => {
         console.error("Error loading output_country.geojson:", error);
@@ -79,50 +82,119 @@ const Mapfilter = () => {
     setLevel2Options(availableLevel2Options);
   }, [filterCountry, level1Filter, outputLevel2Data]);
 
-  const filteredCountryData = outputCountryData.filter((feature) => {
-    if (
-      level1Filter.length === 0 &&
-      level2Filter.length === 0 &&
-      filterCountry.length === 0
-    ) {
-      return true;
+  useEffect(() => {
+    console.log('Filtering data...');
+    const filteredCountryFeatures = [];
+    const filteredLevel1Features = [];
+    const filteredLevel2Features = [];
+  
+    if (filterCountry.length > 0 || level1Filter.length > 0 || level2Filter.length > 0) {
+      console.log('Applying filters...');
+      filteredCountryFeatures.push(
+        ...outputCountryData
+          .filter((feature) => {
+            if (
+              level1Filter.length === 0 &&
+              level2Filter.length === 0 &&
+              filterCountry.length === 0
+            ) {
+              return true;
+            }
+            return filterCountry.includes(feature.properties.Country);
+          })
+          .map((feature) => ({
+            type: 'Feature',
+            properties: feature.properties,
+            geometry: feature.geometry,
+          }))
+      );
+  
+      // Level 1 filter should not be affected by Level 2 filter.
+      filteredLevel1Features.push(
+        ...outputLevel1Data
+          .filter((feature) => {
+            console.log('Filtering level 1 data...');
+            return (
+              (level1Filter.length === 0 ||
+                level1Filter.includes(feature.properties.Name_1)) &&
+              (filterCountry.length === 0 ||
+                filterCountry.includes(feature.properties.Country))
+            );
+          })
+          .map((feature) => ({
+            type: 'Feature',
+            properties: feature.properties,
+            geometry: feature.geometry,
+          }))
+      );
+  
+      // Level 2 filter.
+      filteredLevel2Features.push(
+        ...outputLevel2Data
+          .filter((feature) => {
+            console.log('Filtering level 2 data...');
+            return (
+              (level1Filter.length === 0 ||
+                level1Filter.includes(feature.properties.Name_1)) &&
+              (level2Filter.length === 0 ||
+                level2Filter.includes(feature.properties.Name_2)) &&
+              (filterCountry.length === 0 ||
+                filterCountry.includes(feature.properties.Country))
+            );
+          })
+          .map((feature) => ({
+            type: 'Feature',
+            properties: feature.properties,
+            geometry: feature.geometry,
+          }))
+      );
+    } else {
+      // Handle the case when no filters are applied.
+      filteredCountryFeatures.push(
+        ...outputCountryData.map((feature) => ({
+          type: 'Feature',
+          properties: feature.properties,
+          geometry: feature.geometry,
+        }))
+      );
+      filteredLevel1Features.push(
+        ...outputLevel1Data.map((feature) => ({
+          type: 'Feature',
+          properties: feature.properties,
+          geometry: feature.geometry,
+        }))
+      );
+      filteredLevel2Features.push(
+        ...outputLevel2Data.map((feature) => ({
+          type: 'Feature',
+          properties: feature.properties,
+          geometry: feature.geometry,
+        }))
+      );
     }
-    return filterCountry.includes(feature.properties.Country);
-  });
-
-  const filteredLevel1Data = outputLevel1Data.filter((feature) => {
-    if (
-      level1Filter.length === 0 &&
-      level2Filter.length === 0 &&
-      filterCountry.length === 0
-    ) {
-      return true;
-    }
-    return (
-      (level1Filter.length === 0 ||
-        level1Filter.includes(feature.properties.Name_1)) &&
-      (level2Filter.length === 0 ||
-        level2Filter.includes(feature.properties.Name_2)) &&
-      (filterCountry.length === 0 ||
-        filterCountry.includes(feature.properties.Country))
-    );
-  });
-
-  const filteredLevel2Data = outputLevel2Data.filter((feature) => {
-    if (
-      level1Filter.length === 0 &&
-      filterCountry.length === 0
-    ) {
-      return true;
-    }
-    return (
-      (level1Filter.length === 0 ||
-        level1Filter.includes(feature.properties.Name_1)) &&
-      (filterCountry.length === 0 ||
-        filterCountry.includes(feature.properties.Country))
-    );
-  });
-
+  
+    const filteredData = {
+      filteredCountryData: {
+        type: 'FeatureCollection',
+        features: filteredCountryFeatures,
+      },
+      filteredLevel1Data: {
+        type: 'FeatureCollection',
+        features: filteredLevel1Features,
+      },
+      filteredLevel2Data: {
+        type: 'FeatureCollection',
+        features: filteredLevel2Features,
+      },
+    };
+  
+    console.log('Filtered Country data:', filteredData.filteredCountryData); // this has to be sent to App
+    console.log('Filtered Lv1 data:', filteredData.filteredLevel1Data);
+    console.log('Filtered Lv2 data:', filteredData.filteredLevel2Data);
+  
+    handleFilteredDataChange(filteredData);
+  }, [filterCountry, level1Filter, level2Filter, outputCountryData, outputLevel1Data, outputLevel2Data]);
+      
   return (
     <div>
       <h1></h1>
@@ -152,33 +224,6 @@ const Mapfilter = () => {
       </div>
     </div>
   );
-
-      {/*<div className="data-section">
-        <h2>Filtered Country Data</h2>
-        <ul>
-          {filteredCountryData.map((feature, index) => ( // Stored country: feature.properties.Key
-            <li key={index}>{feature.properties.Key}</li>
-          ))}
-        </ul>
-      </div>
-      <div className="data-section">
-        <h2>Filtered Level 1 Data</h2>
-        <ul>
-          {filteredLevel1Data.map((feature, index) => (
-            <li key={index}>{feature.properties.Key}</li>
-          ))}
-        </ul>
-      </div>
-      <div className="data-section">
-        <h2>Filtered Level 2 Data</h2>
-        <ul>
-          {filteredLevel2Data.map((feature, index) => (
-            <li key={index}>{feature.properties.Key}</li>
-          ))}
-        </ul>
-      </div>
-          </div>
-  );*/}
 }
 
 export default Mapfilter;

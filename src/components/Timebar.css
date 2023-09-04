@@ -1,7 +1,7 @@
 .timebar {
   position:absolute;
   display: flex;
-  bottom:760px;
+  bottom:730px;
   left: 25px;
   align-items: center;
   flex-direction: column;
@@ -73,7 +73,7 @@
 
 /* Selected state */
 .month-buttons button.selected {
-  background-color: #072c00;
+  background-color: #7cbb71;
 }
 
 .month-buttons button:hover {

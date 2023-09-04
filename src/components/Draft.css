@@ -1,5 +1,5 @@
 .ag-theme-alpine {
-  height: 800px;
+  height: 830px;
   width: 1030px;
   background-color: lightgray;
   margin-left: 50px;
@@ -70,6 +70,10 @@
     background-color: #e6e5e5b3;
   }
 
+  .total-row {
+    font-weight: bold !important;
+  }
+  
 
 
 button {
@@ -84,3 +88,5 @@ button {
   padding: 0 10px;
   width: 2px;
 }
+
+

@@ -6,7 +6,8 @@ import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import './DraftRow.css';
 
-const Draft = ({ countryData, selectedYear }) => {
+const Draft = ({ countryData, selectedYear, selectedMonth}) => {
+ // console.log(selectedMonth);
   
   const [columnDefs, setColumnDefs] = useState([
     { field: 'Country', rowgroup: true, hide: false, headerClass: 'custom-header', width: 100  },
@@ -25,23 +26,68 @@ const Draft = ({ countryData, selectedYear }) => {
     if (!countryData) {
       return null; // Render nothing while data is being fetched
     }
+
+    const rowData = countryData.features.map((feature) => {
+      const populationData = feature.properties[`POP-${selectedYear}-0${selectedMonth}`];
   
-    const rowData = countryData.features.map(feature => {
+      if (populationData === undefined) {
+        // Data is not available for this combination, return a message
+        return {
+          Country: feature.properties['Country'],
+          L1: '',
+          L2: '',
+          Population: 'Data not available',
+          'Phase 1': 'Data not available',
+          'Phase 2': 'Data not available',
+          'Phase 3': 'Data not available',
+          'Phase 4': 'Data not available',
+          'Phase 5': 'Data not available',
+          'Phase 3-5': 'Data not available',
+          '%': 'Data not available',
+        };
+      }
+  
+      // Data is available, format it
       return {
         Country: feature.properties['Country'],
-        L1: feature.properties[''], 
+        L1: feature.properties[''],
         L2: feature.properties[''],
-        Population: formatNumber(feature.properties[`POP-${selectedYear}-03`]),
-        'Phase 1': formatNumber(feature.properties[`PH1-${selectedYear}-03`]) ,
-        'Phase 2': formatNumber(feature.properties[`PH2-${selectedYear}-03`]) ,
-        'Phase 3': formatNumber(feature.properties[`PH3-${selectedYear}-03`]),
-        'Phase 4': formatNumber(feature.properties[`PH4-${selectedYear}-03`]),
-        'Phase 5': formatNumber(feature.properties[`PH5-${selectedYear}-03`]),
-        'Phase 3-5': formatNumber(feature.properties[`PH3:5-${selectedYear}-03`]),  
-        '%': calculatePercentage((feature.properties[`PH3:5-${selectedYear}-03`]) ,(feature.properties[`POP-${selectedYear}-03`]))
+        Population: formatNumber(populationData),
+        'Phase 1': formatNumber(feature.properties[`PH1-${selectedYear}-0${selectedMonth}`]),
+        'Phase 2': formatNumber(feature.properties[`PH2-${selectedYear}-0${selectedMonth}`]),
+        'Phase 3': formatNumber(feature.properties[`PH3-${selectedYear}-0${selectedMonth}`]),
+        'Phase 4': formatNumber(feature.properties[`PH4-${selectedYear}-0${selectedMonth}`]),
+        'Phase 5': formatNumber(feature.properties[`PH5-${selectedYear}-0${selectedMonth}`]),
+        'Phase 3-5': formatNumber(feature.properties[`PH3:5-${selectedYear}-0${selectedMonth}`]),
+        '%': calculatePercentage(
+          feature.properties[`PH3:5-${selectedYear}-0${selectedMonth}`],
+          populationData
+        ),
       };
-      
     });
+
+    const totalRow = {
+      Country: 'Total', 
+      L1: '', 
+      L2: '',
+      Population: formatNumber(calculateColumnSum('Population', rowData)),
+      'Phase 1': formatNumber(calculateColumnSum('Phase 1', rowData)),
+      'Phase 2': formatNumber(calculateColumnSum('Phase 2', rowData)),
+      'Phase 3': formatNumber(calculateColumnSum('Phase 3', rowData)),
+      'Phase 4': formatNumber(calculateColumnSum('Phase 4', rowData)),
+      'Phase 5': formatNumber(calculateColumnSum('Phase 5', rowData)),
+      'Phase 3-5': formatNumber(calculateColumnSum('Phase 3-5', rowData)),
+      '%': calculatePercentage(
+        calculateColumnSum('Phase 3-5', rowData),
+        calculateColumnSum('Population', rowData)
+      ),
+      
+      rowClass: 'total-row',
+    };
+    
+    
+    const allRows = [...rowData, totalRow];
+
     
 
 
@@ -49,7 +95,8 @@ const Draft = ({ countryData, selectedYear }) => {
   
     return (
       <div className="ag-theme-alpine" >
-        <AgGridReact rowData={rowData}  groupDisplayType={groupDisplayType} columnDefs={columnDefs} />
+        <AgGridReact rowData={allRows} groupDisplayType={groupDisplayType} columnDefs={columnDefs} />
+
       </div>
     );
   };
@@ -65,6 +112,10 @@ const Draft = ({ countryData, selectedYear }) => {
   function calculatePercentage(value, total) {
     const percentage = (value / total) * 100;
     return percentage.toFixed(2); // Displaying percentage with two decimal places
+}
+
+function calculateColumnSum(columnName, rowData) {
+  return rowData.reduce((total, row) => total + parseFloat(row[columnName].replace(/,/g, '')) || 0, 0);
 }
   
   export default Draft;

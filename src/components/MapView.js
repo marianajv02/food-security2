@@ -10,7 +10,7 @@ import { selected } from '@syncfusion/ej2-react-pivotview';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFyaWFuYWp2LSIsImEiOiJjbGs3eXJmbzEwYXR3M2RxbnRuOHVkaHV3In0.rVa0wb_O5OTeuk07J90w5A';
 
-function MapView({selectedYear, onChangeRegion}) {
+function MapView({selectedYear, selectedMonth, onChangeRegion}) {
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [lng, setLng] = useState(0);
@@ -42,7 +42,7 @@ function MapView({selectedYear, onChangeRegion}) {
   const layerNames = ['output_country-2uwmmy', 'output_level1-5iewsu', 'output_level2-8nur76'];
 
   const createLayerClickHandler = (e) => {// CLICKHANDLER si lo dejamos en key ya no tiene que depender de year, solo de la posicion 
-    console.log('clickhandler ran')
+    console.log('clickhandler ran', e.features)
       
     const feature = e.features[0];
     const lngLat = e.lngLat;
@@ -50,12 +50,6 @@ function MapView({selectedYear, onChangeRegion}) {
     const newHoveredRegion = {
       name: feature.properties['Name_2'],
       key: feature.properties['Key'] 
-      //population: feature.properties[`POP-${selectedYear}-03`], 
-      //phase1: feature.properties[`PH1-${selectedYear}-03`],
-      //phase2: feature.properties[`PH2-${selectedYear}-03`],  
-      //phase3: feature.properties[`PH3-${selectedYear}-03`],
-      //phase4: feature.properties[`PH4-${selectedYear}-03`],
-      //phase5: feature.properties[`PH5-${selectedYear}-03`]
     };
 
     let popup = null;
@@ -91,7 +85,7 @@ useEffect(() => {
         map.current.setPaintProperty(
           layerName,
           'fill-color',
-          getMapboxExpression(selectedYear)
+          getMapboxExpression(selectedYear, selectedMonth)
         );
       }
     });
@@ -100,7 +94,7 @@ useEffect(() => {
   return () => {
     isMounted = false;
   };
-}, [selectedYear]);
+}, [selectedYear, selectedMonth]);
 
 useEffect(() => {
   let isMounted = true;
@@ -128,15 +122,16 @@ useEffect(() => {
     );
   }
 
-  function getMapboxExpression(selectedYear) {
+  function getMapboxExpression(selectedYear, selectedMonth) {
     const yearValue = parseInt(selectedYear);
+    const monthValue = parseInt(selectedMonth);
     
     return [
       'case',
-      ['==', ['number', ['get', `CLAS-${yearValue}-03`]], 1], '#53ca57',
-      ['==', ['number', ['get', `CLAS-${yearValue}-03`]], 2], '#ffe252',
-      ['==', ['number', ['get', `CLAS-${yearValue}-03`]], 3], '#fa890f',
-      ['==', ['number', ['get', `CLAS-${yearValue}-03`]], 4], '#eb3333',
+      ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 1], '#53ca57',
+      ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 2], '#ffe252',
+      ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 3], '#fa890f',
+      ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 4], '#eb3333',
       '#ffffff'
     ];
   }

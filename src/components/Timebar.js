@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import './Timebar.css';
 import MapView from './MapView';
-import Sidebar from './Sidebar';
+
 
 const Timebar = ({ onChangeYear, onChangeMonth }) => {
   const minYear = 2014;
@@ -53,10 +53,26 @@ const Timebar = ({ onChangeYear, onChangeMonth }) => {
         <div className="year-indicator">{selectedYear}</div>
       </div>
       <div className="month-buttons">
-        <button onClick={() => handleMonthButtonClick('March')}>March</button>
-        <button onClick={() => handleMonthButtonClick('June')}>June</button>
-        <button onClick={() => handleMonthButtonClick('November')}>November</button>
+        <button
+          className={selectedMonth === 3 ? 'selected' : ''}
+          onClick={() => handleMonthButtonClick('March')}
+        >
+          March
+        </button>
+        <button
+          className={selectedMonth === 6 ? 'selected' : ''}
+          onClick={() => handleMonthButtonClick('June')}
+        >
+          June
+        </button>
+        <button
+          className={selectedMonth === 11 ? 'selected' : ''}
+          onClick={() => handleMonthButtonClick('November')}
+        >
+          November
+        </button>
       </div>
+
     </div>
   );
 };
