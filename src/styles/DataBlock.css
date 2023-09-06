@@ -1,0 +1,70 @@
+ .data-block {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    min-width: 250px;
+  }
+
+.data-block h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+.data-block p {
+    font-size: 1rem;
+    margin: 5px 0;
+  }
+  
+.data-block a {
+    display: block;
+    color: #007bff;
+    text-decoration: none;
+  }
+
+.location img {
+    width: 15px; /* Adjust width as needed */
+    height: 15px; /* Adjust height as needed */
+    margin-right: 5px;
+  }
+  
+.picture-wrapper img {
+    max-width: 300px; /* Adjust width as needed */
+    max-height: 120px; /* Adjust height as needed */
+    margin-top: 1.5rem;
+  }
+  
+.project-name {
+    color: darkgreen; /* Change color to dark green */
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    text-align: left; /* Align text to the left */
+  }
+  
+.location {
+    text-align: left; /* Align text to the left */
+  }
+  
+.partners {
+    text-align: left; /* Align text to the left */
+    padding-bottom: 3rem;
+  }
+  
+.more-button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: green;
+    color: white;
+    border-radius: 20px;
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+.more-button:hover {
+    background-color: rgb(0, 73, 0);
+  }

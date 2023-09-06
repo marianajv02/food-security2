@@ -23,7 +23,7 @@ const Draft = ({ countryData, selectedYear, selectedMonth}) => {
     { field: '%', headerClass: 'custom-header5',width: 60  }
   ]);
   
-    if (!countryData) {
+    if (!countryData || !countryData.features) {
       return null; // Render nothing while data is being fetched
     }
 

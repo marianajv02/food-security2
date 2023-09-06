@@ -1,0 +1,733 @@
+[
+    {
+        "Project": "Support for local economic development and conflict prevention in the Gao and Timbuktu regions (ADEL)",
+        "Status": "COMPLETED",
+        "Location": "Mali",
+        "Partners": "EU",
+        "Topic": "Agriculture & value chains; Education; Employment & revenues; Fisheries & aquaculture; Food security & zero hunger; Gender; Governance & capacity-building; Health; Livestock & pastoralism; Local actors & livelihoods; Markets, prices & trade; Poverty; Social protection；Water & sanitation; Youth",
+        "Target": "Artisanal fishermen; Childer aged under 5 years; Institutions; Pastoralists & Agro-pastoralists; Poor households; Poor workers in the informal economy; Pregnant and lactating women; Refugees; Vulnerable small-scale farmers; Women; Youth",
+        "AGIRPillars": "Pillar 1: Improve social protection for the most vulnerable communities and households in order to secure their livelihoods; Pillar 3: Sustainably improve agricultural and food productivity and the incomes of the most vulnerable households and improve access to food; Pillar 4: Strengthen governance in food and nutrition security",
+        "StartDate": "2019-12-01",
+        "EndDate": "2022-11-30",
+        "Detail": "https://www.food-security.net/en/projet/appui-au-developpement-economique-local-et-a-la-prevention-des-conflits-dans-les-regions-de-tombouctou-et-de-gao-adel/"
+    },
+    {
+        "Project": "Recovery of the local economy and community support - Phase II (RELAC II)",
+        "Status": "COMPLETED",
+        "Location": "Mali",
+        "Partners": "EU",
+        "Topic": "Agriculture & value chains; Climate, climate change & adaptation; Employment & revenues; Food security & zero hunger; Gender; Governance & capacity-building; Local actors & livelihoods; Natural resource management; Poverty; Social protection；Water & sanitation; Youth",
+        "Target": "Artisanal fishermen; Institutions; Poor households; Poor workers in the informal economy; Vulnerable small-scale farmers; Women; Youth",
+        "AGIRPillars": "Pillar 1: Improve social protection for the most vulnerable communities and households in order to secure their livelihoods; Pillar 3: Sustainably improve agricultural and food productivity and the incomes of the most vulnerable households and improve access to food; Pillar 4: Strengthen governance in food and nutrition security",
+        "StartDate": "2016-09-30",
+        "EndDate": "2019-11-30",
+        "Detail": "https://www.food-security.net/en/projet/relance-de-leconomie-et-appui-aux-collectivites-ii-relac-ii/"
+    },
+    {
+        "Project": "Approvisionnement en eau potable de Bamako à partir de la localité de Kabala (PAEP Bamako/Kabala)",
+        "Status": "COMPLETED",
+        "Location": "Mali",
+        "Partners": "AfDB; BID; EU; Fonds africain de développement; France; Italy; The World Bank",
+        "Detail": "https://www.food-security.net/en/projet/approvisionnement-en-eau-potable-de-bamako-a-partir-de-la-localite-de-kabala-paep-bamako-kabala/"
+    },
+    {
+        "Project": "Programme to strengthen resilience of communities vulnerable to food and nutrition insecurity in the northern border areas of Burkina Faso (LRRD)",
+        "Status": "COMPLETED",
+        "Location": "Burkina Faso",
+        "Partners": "EU",
+        "Detail": "https://www.food-security.net/en/projet/renforcement-de-la-resilience-des-communautes-vulnerables-a-linsecurite-alimentaire-et-nutritionnelle/"
+    },
+    {
+        "Project": "Strengthening resilience of vulnerable communities; households and food and nutrition insecure people",
+        "Status": "COMPLETED",
+        "Location": "Mali",
+        "Partners": "EU",
+        "Detail": "https://www.food-security.net/en/projet/renforcement-de-la-resilience-des-communautes-des-menages-et-des-individus-vulnerables-a-linsecurite-alimentaire-et-nutritionnelle/"
+    },
+    {
+        "Project": "Youth and Stabilisation Programme (PROJES)",
+        "Status": "COMPLETED",
+        "Location": "Mali",
+        "Partners": "EU",
+        "Detail": "https://www.food-security.net/en/projet/programme-jeunesse-et-stabilisation-projes/"
+    },
+    {
+        "Project": "Strengthening resilience of vulnerable urban and rural communities in Mauritania",
+        "Status": "COMPLETED",
+        "Location": "Mauritania",
+        "Partners": "EU",
+        "Detail": "https://www.food-security.net/en/projet/renforcement-de-la-resilience-des-communautes-urbaines-et-rurales-vulnerables-en-mauritanie/"
+    },
+    {
+        "Project": "Integrated project to support the resilience of vulnerable refugee; displaced; returnee and host populations in the Diffa region",
+        "Status": "COMPLETED",
+        "Location": "Niger",
+        "Partners": "EU",
+        "Detail": "https://www.food-security.net/en/projet/appui-a-la-resilience-des-populations-vulnerables-refugiees-deplacees-retournees-et-hotes-de-la-region-de-diffa/"
+    },
+    {
+        "Project": "Institutional and community rehabilitation in the Diffa region; Lake Tchad basin; Niger",
+        "Status": "COMPLETED",
+        "Location": "Niger",
+        "Partners": "EU; HCR",
+        "Detail": "https://www.food-security.net/en/projet/renforcement-de-la-resilience-institutionnelle-et-communautaire-dans-la-region-diffa-bassin-du-lac-tchad/"
+    },
+    {
+        "Project": "Plan of action for rapid economic impact in Agadez",
+        "Status": "COMPLETED",
+        "Location": "Niger",
+        "Partners": "EU",
+        "Detail": "https://www.food-security.net/en/projet/plan-dactions-a-impact-economique-rapide-a-agadez-paiera/"
+    },
+    {
+        "Project": "Stabilisation and socio-economic strengthening of populations affected by irregular migration in transit zones of Niger",
+        "Status": "COMPLETED",
+        "Location": "Niger",
+        "Partners": "EU",
+        "Detail": "https://www.food-security.net/en/projet/stabilisation-et-renforcement-socio-economique-des-populations-affectees-par-la-migration-irreguliere-dans-les-zones-de-transit-au-niger/"
+    },
+    {
+        "Project": "Linking relief; rehabilitation and development and promoting the stability and safety of communities in displacement in northeastern Nigeria",
+        "Status": "COMPLETED",
+        "Location": "Nigeria",
+        "Partners": "EU",
+        "Detail": "https://www.food-security.net/en/projet/relier-les-secours-la-rehabilitation-et-le-developpement-et-promouvoir-la-stabilite-et-la-securite-des-communautes-deplacees-dans-le-nord-est-du-nigeria/"
+    },
+    {
+        "Project": "Investing in the safety and integrity of Nigerian girls (I-SING)",
+        "Status": "COMPLETED",
+        "Location": "Nigeria",
+        "Partners": "EU",
+        "Detail": "https://www.food-security.net/en/projet/investir-dans-la-securite-et-lintegrite-des-filles-nigerianes-i-sing/"
+    },
+    {
+        "Project": "Strengthening psychosocial support; mental health; reintegration and protection services for children in Borno; including children associated with Boko Haram",
+        "Status": "COMPLETED",
+        "Location": "Nigeria",
+        "Partners": "EU; UNICEF",
+        "Detail": "https://www.food-security.net/en/projet/soutien-psychosocial-de-sante-mentale-de-reintegration-et-de-protection-pour-les-enfants-de-borno-y-compris-les-enfants-associes-a-boko-haram/"
+    },
+    {
+        "Project": "EU support to response; recovery and resilience in Borno State",
+        "Status": "COMPLETED",
+        "Location": "Nigeria",
+        "Partners": "EU",
+        "Detail": "https://www.food-security.net/en/projet/soutien-de-lue-a-la-reponse-au-relevement-et-a-la-resilience-dans-letat-de-borno/"
+    },
+    {
+        "Project": "Resilience of populations in the face of nutritional and food crises in departure areas",
+        "Status": "COMPLETED",
+        "Location": "Senegal",
+        "Partners": "Espagne - AECID; EU",
+        "Detail": "https://www.food-security.net/en/projet/resilience-des-populations-face-aux-crises-nutritionnelles-et-alimentaires-dans-les-zones-de-depart/"
+    },
+    {
+        "Project": "Normalising living conditions of populations directly affected by the Casamance conflict",
+        "Status": "COMPLETED",
+        "Location": "Senegal",
+        "Partners": "EU",
+        "Detail": "https://www.food-security.net/en/projet/normalisation-des-conditions-de-vie-des-populations-directement-affectees-par-le-conflit-en-casamance/"
+    },
+    {
+        "Project": "Strengthening food and nutrition security in the Matam region",
+        "Status": "COMPLETED",
+        "Location": "Senegal",
+        "Partners": "EU",
+        "Detail": "https://www.food-security.net/en/projet/projet-de-renforcement-de-la-securite-alimentaire-et-nutritionnelle-dans-la-region-de-matam/"
+    },
+    {
+        "Project": "Strengthening resilience and peaceful cohabitation in Chad (PRCPT)",
+        "Status": "COMPLETED",
+        "Location": "Chad",
+        "Partners": "EU; Germany - BMZ",
+        "Detail": "https://www.food-security.net/en/projet/renforcement-de-la-resilience-et-de-la-cohabitation-pacifique-au-tchad-prcpt/"
+    },
+    {
+        "Project": "Inclusive development programme in host areas (DIZA)",
+        "Status": "COMPLETED",
+        "Location": "Chad",
+        "Partners": "EU; France",
+        "Detail": "https://www.food-security.net/en/projet/programme-de-developpement-inclusif-dans-les-zones-daccueil-diza-2/"
+    },
+    {
+        "Project": "Support for the demining; development and social protection of vulnerable people",
+        "Status": "COMPLETED",
+        "Location": "Chad",
+        "Partners": "EU",
+        "Detail": "https://www.food-security.net/en/projet/appui-au-deminage-a-la-protection-sociale-et-au-developpement-des-personnes-vulnerables/"
+    },
+    {
+        "Project": "Inclusive economic and social recovery for Lake Chad (RESILAC)",
+        "Status": "COMPLETED",
+        "Location": "Chad; Niger; Nigeria",
+        "Partners": "EU; France",
+        "Detail": "https://www.food-security.net/en/projet/redressement-economique-et-social-inclusif-du-lac-tchad-resilac/"
+    },
+    {
+        "Project": "Strengthening the resilience and empowerment of refugees; returnees and internally displaced persons affected by the conflict in northern Mali",
+        "Status": "COMPLETED",
+        "Location": "Burkina Faso; G5 Sahel area; Mali; Mauritania; Niger",
+        "Partners": "EU",
+        "Detail": "https://www.food-security.net/en/projet/renforcement-de-la-resilience-et-de-la-capacite-dautonomisation-des-refugies-des-rapatries-et-des-personnes-deplacees-internes-lies-au-conflit-du-nord-mali/"
+    },
+    {
+        "Project": "Emergency programme for the stabilisation of G5 Sahel border areas (PDU)",
+        "Status": "COMPLETED",
+        "Location": "Burkina Faso; Chad; G5 Sahel area; Mali; Mauritania; Niger",
+        "Partners": "Danemark - DANIDA; EU; Germany - BMZ",
+        "Detail": "https://www.food-security.net/en/projet/programme-durgence-pour-la-stabilisation-des-espaces-frontaliers-du-g5-sahel-pdu/"
+    },
+    {
+        "Project": "Dispositif innovant de financement de l'agriculture familiale (AGRI+)",
+        "Status": "COMPLETED",
+        "Location": "Burkina Faso; Mali",
+        "Partners": "Luxembourg",
+        "Detail": "https://www.food-security.net/en/projet/dispositif-innovant-de-financement-de-lagriculture-familiale-au-mali-et-au-burkina-faso-agri/"
+    },
+    {
+        "Project": "Programme d'appui au secteur forestier du Burkina Faso (PASF)",
+        "Status": "COMPLETED",
+        "Location": "Burkina Faso",
+        "Partners": "Luxembourg",
+        "Detail": "https://www.food-security.net/en/projet/appui-au-secteur-forestier-du-burkina-faso-pasf/"
+    },
+    {
+        "Project": "Accès aux femmes aux moyens de production pour une agriculture résiliente au changement climatique",
+        "Status": "COMPLETED",
+        "Location": "Mali",
+        "Partners": "Luxembourg",
+        "Detail": "https://www.food-security.net/en/projet/acces-aux-femmes-aux-moyens-de-production-pour-une-agriculture-resiliente-au-changement-climatique/"
+    },
+    {
+        "Project": "Projet d'appui à la compétitivité des produits de la filière karité au Burkina Faso (PACFIK)",
+        "Status": "COMPLETED",
+        "Location": "Burkina Faso",
+        "Partners": "Luxembourg",
+        "Detail": "https://www.food-security.net/en/projet/projet-dappui-a-la-competitivite-des-produits-de-la-filiere-karite-au-burkina-faso-pacfik/"
+    },
+    {
+        "Project": "Support Programme for the Water and Sanitation Sector (PASEHA-3)",
+        "Status": "COMPLETED",
+        "Location": "Niger",
+        "Partners": "Danemark - DANIDA; Luxembourg",
+        "Detail": "https://www.food-security.net/en/projet/programme-dappui-au-secteur-eau-et-assainissement-paseha-3-2/"
+    },
+    {
+        "Project": "Support programme for the water and sanitation sector (PASEA)",
+        "Status": "COMPLETED",
+        "Location": "Cabo Verde",
+        "Partners": "Luxembourg",
+        "Detail": "https://www.food-security.net/en/projet/programme-dappui-au-secteur-de-leau-et-de-lassainissement-pasea/"
+    },
+    {
+        "Project": "Programme d'appui à la gestion durable des ressources forestières - phase 2",
+        "Status": "COMPLETED",
+        "Location": "Burkina Faso",
+        "Partners": "Luxembourg",
+        "Detail": "https://www.food-security.net/en/projet/appui-a-la-gestion-durable-des-ressources-forestieres-phase-2/"
+    },
+    {
+        "Project": "Health and social protection",
+        "Status": "COMPLETED",
+        "Location": "Senegal",
+        "Partners": "Luxembourg",
+        "Detail": "https://www.food-security.net/en/projet/sante-et-protection-sociale/"
+    },
+    {
+        "Project": "Projet de récupération des terres dégradées en milieu pastoral",
+        "Status": "COMPLETED",
+        "Location": "Burkina Faso",
+        "Partners": "Luxembourg",
+        "Detail": "https://www.food-security.net/en/projet/projet-de-recuperation-des-terres-degradees-en-milieu-pastoral/"
+    },
+    {
+        "Project": "Appui au développement agricole durable dans la région de Dosso (Phase II)",
+        "Status": "COMPLETED",
+        "Location": "Niger",
+        "Partners": "Luxembourg",
+        "Detail": "https://www.food-security.net/en/projet/appui-au-developpement-agricole-durable-dans-la-region-de-dosso-phase-ii/"
+    },
+    {
+        "Project": "Programme d'appui aux filières agropastorales (PAFA)",
+        "Status": "COMPLETED",
+        "Location": "Mali",
+        "Partners": "Switzerland - SDC",
+        "Detail": "https://www.food-security.net/en/projet/programme-dappui-aux-filieres-agropastorales-pafa/"
+    },
+    {
+        "Project": "Rural development and food security",
+        "Status": "COMPLETED",
+        "Location": "Mali",
+        "Partners": "Luxembourg",
+        "Detail": "https://www.food-security.net/en/projet/developpement-rural-et-securite-alimentaire/"
+    },
+    {
+        "Project": "Rural sanitation and hygiene market development in northern Ghana",
+        "Status": "COMPLETED",
+        "Location": "Ghana",
+        "Partners": "Canada - Global Affairs",
+        "Detail": "https://www.food-security.net/en/projet/developpement-du-marche-de-lassainissement-et-de-lhygiene-en-milieu-rural-au-nord-du-ghana/"
+    },
+    {
+        "Project": "Promoting maternal; newborn and child sustainable health (PROMISE)",
+        "Status": "COMPLETED",
+        "Location": "Ghana",
+        "Partners": "Canada - Global Affairs",
+        "Detail": "https://www.food-security.net/en/projet/promouvoir-la-sante-durable-des-meres-des-nouveau-nes-et-des-enfants/"
+    },
+    {
+        "Project": "Modernising Agriculture in Ghana",
+        "Status": "COMPLETED",
+        "Location": "Ghana",
+        "Partners": "Canada - Global Affairs",
+        "Detail": "https://www.food-security.net/en/projet/modernisation-de-lagriculture-au-ghana/"
+    },
+    {
+        "Project": "Ghanaian farmers' economic advancement through seedlings",
+        "Status": "COMPLETED",
+        "Location": "Ghana",
+        "Partners": "Canada - Global Affairs",
+        "Detail": "https://www.food-security.net/en/projet/avancement-economique-des-fermiers-ghaneens-par-lutilisation-de-semis/"
+    },
+    {
+        "Project": "Enhanced agri-food value chains initiative",
+        "Status": "COMPLETED",
+        "Location": "Ghana",
+        "Partners": "Canada - Global Affairs",
+        "Detail": "https://www.food-security.net/en/projet/initiative-damelioration-des-chaines-de-valeur-agro-alimentaires/"
+    },
+    {
+        "Project": "Forest Carbon Partnership Facility",
+        "Status": "COMPLETED",
+        "Location": "Burkina Faso; Côte d'Ivoire; Ghana; Liberia; Nigeria; Togo",
+        "Partners": "",
+        "Detail": "https://www.food-security.net/en/projet/fonds-de-partenariat-pour-le-carbone-forestier/"
+    },
+    {
+        "Project": "Building inclusive and sustainable communities",
+        "Status": "COMPLETED",
+        "Location": "Côte d'Ivoire; Ghana; Senegal",
+        "Partners": "Canada - Global Affairs",
+        "Detail": "https://www.food-security.net/en/projet/des-communautes-inclusives-et-durables/"
+    },
+    {
+        "Project": "Every child thrives",
+        "Status": "COMPLETED",
+        "Location": "Côte d'Ivoire",
+        "Partners": "Canada - Global Affairs",
+        "Detail": "https://www.food-security.net/en/projet/tous-les-enfants-sepanouissent/"
+    },
+    {
+        "Project": "Water and economic growth in the Sahel region of Burkina Faso",
+        "Status": "COMPLETED",
+        "Location": "Burkina Faso",
+        "Partners": "Canada - Global Affairs",
+        "Detail": "https://www.food-security.net/en/projet/eau-et-croissance-economique-dans-la-region-sahelienne-du-burkina-faso/"
+    },
+    {
+        "Project": "Seeds of Survival 2015-20",
+        "Status": "COMPLETED",
+        "Location": "Burkina Faso; Mali",
+        "Partners": "Canada - Global Affairs",
+        "Detail": "https://www.food-security.net/en/projet/semences-de-la-survie-2015-20/"
+    },
+    {
+        "Project": "Support for women rice parboilers (PAERIZ)",
+        "Status": "COMPLETED",
+        "Location": "Burkina Faso",
+        "Partners": "Canada - Global Affairs",
+        "Detail": "https://www.food-security.net/en/projet/appui-aux-etuveuses-de-riz-paeriz/"
+    },
+    {
+        "Project": "Scaling her voice on air in Burkina Faso; Ghana; Mali and Senegal",
+        "Status": "COMPLETED",
+        "Location": "Burkina Faso; Ghana; Mali; Senegal",
+        "Partners": "Canada - Global Affairs",
+        "Detail": "https://www.food-security.net/en/projet/voix-de-femmes-a-grande-echelle-au-burkina-faso-au-ghana-au-mali-et-au-senegal/"
+    },
+    {
+        "Project": "Promotion of sexual and reproductive health and rights and nutrition for adolescent girls",
+        "Status": "COMPLETED",
+        "Location": "Burkina Faso",
+        "Partners": "Canada - Global Affairs",
+        "Detail": "https://www.food-security.net/en/projet/promotion-de-la-sante-des-droits-sexuels-et-reproductifs-et-de-la-nutrition-des-adolescentes/"
+    },
+    {
+        "Project": "Mother and Child Health Enhancement Programme (PASME 2)",
+        "Status": "COMPLETED",
+        "Location": "Burkina Faso",
+        "Partners": "Canada - Global Affairs",
+        "Detail": "https://www.food-security.net/en/projet/programme-damelioration-de-la-sante-des-meres-et-des-enfants-phase-2-pasme-2/"
+    },
+    {
+        "Project": "Maternal Child Health Initiative",
+        "Status": "COMPLETED",
+        "Location": "Burkina Faso",
+        "Partners": "Canada - Global Affairs",
+        "Detail": "https://www.food-security.net/en/projet/initiative-sur-la-sante-des-meres-et-des-enfants/"
+    },
+    {
+        "Project": "Multi-Country Emergency Food Assistance",
+        "Status": "COMPLETED",
+        "Location": "Burkina Faso; Chad; Mali; Mauritania; Niger; Nigeria",
+        "Partners": "Canada - Global Affairs",
+        "Detail": "https://www.food-security.net/en/projet/assistance-alimentaire-durgence-multi-pays/"
+    },
+    {
+        "Project": "Volunteer Sending 2015-20",
+        "Status": "COMPLETED",
+        "Location": "Benin; Burkina Faso; Mali; Senegal",
+        "Partners": "Canada - Global Affairs",
+        "Detail": "https://www.food-security.net/en/projet/envoi-de-volontaires-2015-20/"
+    },
+    {
+        "Project": "Supporting essential maternal and child health services",
+        "Status": "COMPLETED",
+        "Location": "Benin; Togo",
+        "Partners": "Canada - Global Affairs",
+        "Detail": "https://www.food-security.net/en/projet/appuyer-les-services-de-sante-essentiels-des-meres-et-des-enfants/"
+    },
+    {
+        "Project": "Promoting sexual and reproductive health and rights (PSDSR)",
+        "Status": "COMPLETED",
+        "Location": "Benin",
+        "Partners": "Canada - Global Affairs; Netherlands (The) - MINBUZA",
+        "Detail": "https://www.food-security.net/en/projet/promotion-de-la-sante-et-des-droits-sexuels-et-reproductifs-psdsr/"
+    },
+    {
+        "Project": "Enhanced Child Health Days",
+        "Status": "COMPLETED",
+        "Location": "Benin; Burkina Faso; Chad; Côte d'Ivoire; Guinea; Sierra Leone; Togo",
+        "Partners": "Canada - Global Affairs",
+        "Detail": "https://www.food-security.net/en/projet/journees-ameliorees-de-la-sante-de-lenfant/"
+    },
+    {
+        "Project": "Durable integration of agropastoral graduates",
+        "Status": "COMPLETED",
+        "Location": "Benin; Mali",
+        "Partners": "Canada - Global Affairs",
+        "Detail": "https://www.food-security.net/en/projet/insertion-durable-des-diplomes-du-secteur-agropastoral/"
+    },
+    {
+        "Project": "Food security innovation and mobilisation",
+        "Status": "COMPLETED",
+        "Location": "Burkina Faso",
+        "Partners": "Canada - Global Affairs",
+        "Detail": "https://www.food-security.net/en/projet/innovation-et-mobilisation-pour-la-securite-alimentaire-imsa/"
+    },
+    {
+        "Project": "Better nutrition for better lives for women; newborns; children and girls",
+        "Status": "COMPLETED",
+        "Location": "Burkina Faso; Niger; Nigeria; Senegal",
+        "Partners": "Canada - Global Affairs",
+        "Detail": "https://www.food-security.net/en/projet/une-meilleure-nutrition-pour-une-vie-meilleure-en-faveur-des-femmes-nouveau-nes-enfants-et-filles/"
+    },
+    {
+        "Project": "Support for women's entrepreneurship within the rice sector",
+        "Status": "COMPLETED",
+        "Location": "Benin",
+        "Partners": "Canada - Global Affairs",
+        "Detail": "https://www.food-security.net/en/projet/appui-a-lentreprenariat-feminin-au-sein-de-la-filiere-riz/"
+    },
+    {
+        "Project": "Support for the structuring of a profitable; fair and sustainable family agriculture",
+        "Status": "COMPLETED",
+        "Location": "Benin",
+        "Partners": "Canada - Global Affairs",
+        "Detail": "https://www.food-security.net/en/projet/projet-dappui-a-la-structuration-dune-agriculture-familiale-rentable-equitable-durable-pasafred/"
+    },
+    {
+        "Project": "Renforcement des investissements productifs et énergétiques en Mauritanie pour le développement durable des zones rurales (RIMDIR)",
+        "Status": "COMPLETED",
+        "Location": "Mauritania",
+        "Partners": "Belgium - Enable; EU",
+        "Detail": "https://www.food-security.net/en/projet/renforcement-des-investissements-productifs-et-energetiques-en-mauritanie-pour-le-developpement-durable-des-zones-rurales-rimdir/"
+    },
+    {
+        "Project": "Projet d'appui aux droits à l'accès à l'eau potable et à l'assainissement",
+        "Status": "COMPLETED",
+        "Location": "Burkina Faso",
+        "Partners": "Belgium - Enable",
+        "Detail": "https://www.food-security.net/en/projet/projet-dappui-aux-droits-a-lacces-a-leau-potable-et-a-lassainissement/"
+    },
+    {
+        "Project": "Programme de promotion des filie?res (PROFI)",
+        "Status": "COMPLETED",
+        "Location": "Benin",
+        "Partners": "Belgium - Enable",
+        "Detail": "https://www.food-security.net/en/projet/programme-de-promotion-des-filieres-profi-volet-operationnel/"
+    },
+    {
+        "Project": "Programme d'appui au développement de l'élevage au Niger (PRADEL) - Kiyo; Arziki",
+        "Status": "COMPLETED",
+        "Location": "Niger",
+        "Partners": "Belgium - Enable",
+        "Detail": "https://www.food-security.net/en/projet/programme-dappui-au-developpement-de-lelevage-au-niger-pradel-kiyo-arziki/"
+    },
+    {
+        "Project": "Programme d?appui au système de santé (PASS)",
+        "Status": "COMPLETED",
+        "Location": "Niger",
+        "Partners": "Belgium - Enable",
+        "Detail": "https://www.food-security.net/en/projet/programme-dappui-au-systeme-de-sante-pass/"
+    },
+    {
+        "Project": "Projet d'amérlioration des services d'eau potables et d'assainissement en milieu rural",
+        "Status": "COMPLETED",
+        "Location": "Senegal",
+        "Partners": "Belgium - Enable; Luxembourg",
+        "Detail": "https://www.food-security.net/en/projet/projet-damerlioration-des-services-deau-potables-et-dassainissement-en-milieu-rural/"
+    },
+    {
+        "Project": "Projet d'appui à la réduction de l'émigration rurale et à la réintégration dans le bassin arachidier",
+        "Status": "COMPLETED",
+        "Location": "Senegal",
+        "Partners": "Belgium - Enable; EU",
+        "Detail": "https://www.food-security.net/en/projet/projet-dappui-a-la-reduction-de-lemigration-rurale-et-a-la-reintegration-dans-le-bassin-arachidier/"
+    },
+    {
+        "Project": "Programme d'appui à la filière halieutique au Mali (PAFHA)",
+        "Status": "ONGOING",
+        "Location": "Mali",
+        "Partners": "Belgium - Enable; EU",
+        "Detail": "https://www.food-security.net/en/projet/programme-dappui-a-la-filiere-halieutique-au-mali-pafha/"
+    },
+    {
+        "Project": "Lutte contre l'insécurité alimentaire et la malnutrition au niveau du cercle de Nara",
+        "Status": "COMPLETED",
+        "Location": "Mali",
+        "Partners": "Belgium - Enable",
+        "Detail": "https://www.food-security.net/en/projet/lutte-contre-linsecurite-alimentaire-et-la-malnutrition-au-niveau-du-cercle-de-nara/"
+    },
+    {
+        "Project": "Cre?ation d'emplois et d'opportunite?s e?conomiques a? travers une gestion durable de l'environnement",
+        "Status": "COMPLETED",
+        "Location": "Niger",
+        "Partners": "Belgium - Enable; EU; Italy",
+        "Detail": "https://www.food-security.net/en/projet/creation-demplois-et-dopportunites-economiques-a-travers-une-gestion-durable-de-lenvironnement/"
+    },
+    {
+        "Project": "Appui au développement agricole dans la zone Kindia-Mamou",
+        "Status": "COMPLETED",
+        "Location": "Guinea",
+        "Partners": "Belgium - Enable",
+        "Detail": "https://www.food-security.net/en/projet/appui-au-developpement-agricole-dans-la-zone-kindia-mamou/"
+    },
+    {
+        "Project": "Appui à la scolarisation des jeunes filles dans les communes de la région de Dosso - Sarraounia",
+        "Status": "COMPLETED",
+        "Location": "Niger",
+        "Partners": "Belgium - Enable",
+        "Detail": "https://www.food-security.net/en/projet/appui-a-la-scolarisation-des-jeunes-filles-dans-les-communes-de-la-region-de-dosso-sarraounia/"
+    },
+    {
+        "Project": "Appui au renforcement des institutions dans le secteur agricole au Bénin (ARISA-BE)",
+        "Status": "COMPLETED",
+        "Location": "Benin",
+        "Partners": "Belgium - Enable; EU",
+        "Detail": "https://www.food-security.net/en/projet/appui-au-renforcement-des-institutions-dans-le-secteur-agricole-au-benin-arisa-be/"
+    },
+    {
+        "Project": "Appui au renforcement de l'élevage et de l'économie pastorale - Koulikoro",
+        "Status": "COMPLETED",
+        "Location": "Mali",
+        "Partners": "Belgium - Enable",
+        "Detail": "https://www.food-security.net/en/projet/appui-au-renforcement-de-lelevage-et-de-leconomie-pastorale-koulikoro/"
+    },
+    {
+        "Project": "Appui multisectoriel à la sécurité alimentaire et nutritionnelle dans l'Atacora (AMSANA)",
+        "Status": "COMPLETED",
+        "Location": "Benin",
+        "Partners": "Belgium - Enable",
+        "Detail": "https://www.food-security.net/en/projet/appui-multisectoriel-a-la-securite-alimentaire-et-nutritionnelle-dans-latacora-amsana-2/"
+    },
+    {
+        "Project": "Appui institutionnel au programme d'appui au secteur santé (AI-PASS)",
+        "Status": "COMPLETED",
+        "Location": "Mauritania",
+        "Partners": "EU",
+        "Detail": "https://www.food-security.net/en/projet/appui-institutionnel-au-programme-dappui-au-secteur-sante-ai-pass/"
+    },
+    {
+        "Project": "Strengthening gender-based social inclusion for resilience and sustainable peace",
+        "Status": "COMPLETED",
+        "Location": "Burkina Faso",
+        "Partners": "Austria - OEZA",
+        "Detail": "https://www.food-security.net/en/projet/renforcer-linclusion-sociale-basee-sur-le-genre-pour-la-resilience-et-une-paix-durable/"
+    },
+    {
+        "Project": "Resilience and food security in the Central Plateau region (RESA-PCL)",
+        "Status": "COMPLETED",
+        "Location": "Burkina Faso",
+        "Partners": "",
+        "Detail": "https://www.food-security.net/en/projet/projet-resilience-et-securite-alimentaire-resa/"
+    },
+    {
+        "Project": "Appui à la compétence professionnelle; l'entreprenariat et l'emploi des jeunes et des femmes dans les régions rurales",
+        "Status": "COMPLETED",
+        "Location": "Burkina Faso",
+        "Partners": "Austria - OEZA; EU",
+        "Detail": "https://www.food-security.net/en/projet/appui-a-la-competence-professionnelle-lentreprenariat-et-lemploi-des-jeunes-et-des-femmes-dans-les-regions-rurales/"
+    },
+    {
+        "Project": "Coopération pour une production agricole durable; économique et écologique",
+        "Status": "COMPLETED",
+        "Location": "Mali",
+        "Partners": "",
+        "Detail": "https://www.food-security.net/en/projet/cooperation-pour-une-production-agricole-durable-economique-et-ecologique/"
+    },
+    {
+        "Project": "Programme d'aide sociale et résilience climatique",
+        "Status": "COMPLETED",
+        "Location": "Mauritania",
+        "Partners": "DfiD; France; The World Bank",
+        "Detail": "https://www.food-security.net/en/projet/programme-daide-sociale-et-resilience-climatique/"
+    },
+    {
+        "Project": "Soutien à l'amélioration de la santé dans les régions Nord",
+        "Status": "COMPLETED",
+        "Location": "Mali",
+        "Partners": "France",
+        "Detail": "https://www.food-security.net/en/projet/soutien-a-lamelioration-de-la-sante-dans-les-regions-nord/"
+    },
+    {
+        "Project": "Développer la culture d'hévéas pour réduire la pauvreté en milieu rural",
+        "Status": "COMPLETED",
+        "Location": "Ghana",
+        "Partners": "France",
+        "Detail": "https://www.food-security.net/en/projet/developper-la-culture-dheveas-pour-reduire-la-pauvrete-en-milieu-rural/"
+    },
+    {
+        "Project": "Renforcer la lutte contre la mortalité maternelle et infantile",
+        "Status": "COMPLETED",
+        "Location": "Côte d'Ivoire",
+        "Partners": "France",
+        "Detail": "https://www.food-security.net/en/projet/renforcer-la-lutte-contre-la-mortalite-maternelle-et-infantile/"
+    },
+    {
+        "Project": "Vers un meilleur service urbain d'eau potable en Côte d'Ivoire",
+        "Status": "COMPLETED",
+        "Location": "Côte d'Ivoire",
+        "Partners": "France",
+        "Detail": "https://www.food-security.net/en/projet/vers-un-meilleur-service-urbain-deau-potable-en-cote-divoire/"
+    },
+    {
+        "Project": "Réduire la mortalité maternelle et infantile en Côte d'Ivoire",
+        "Status": "ONGOING",
+        "Location": "Côte d'Ivoire",
+        "Partners": "France",
+        "Detail": "https://www.food-security.net/en/projet/reduire-la-mortalite-maternelle-et-infantile-en-cote-divoire/"
+    },
+    {
+        "Project": "Adapter les villes du Bénin aux changements climatiques (PAVICC)",
+        "Status": "COMPLETED",
+        "Location": "Benin",
+        "Partners": "France",
+        "Detail": "https://www.food-security.net/en/projet/adapter-les-villes-du-benin-aux-changements-climatiques-pavicc/"
+    },
+    {
+        "Project": "Soutenir l'investissement agricole au Sénégal",
+        "Status": "COMPLETED",
+        "Location": "Senegal",
+        "Partners": "France",
+        "Detail": "https://www.food-security.net/en/projet/soutenir-linvestissement-agricole-au-senegal/"
+    },
+    {
+        "Project": "Structurer le développement pastoral (PASTOR)",
+        "Status": "COMPLETED",
+        "Location": "Chad",
+        "Partners": "EU; France",
+        "Detail": "https://www.food-security.net/en/projet/structurer-le-developpement-pastoral-pastor/"
+    },
+    {
+        "Project": "Aménagement hydro-agricole du Bahr Linia",
+        "Status": "COMPLETED",
+        "Location": "Chad",
+        "Partners": "France",
+        "Detail": "https://www.food-security.net/en/projet/amenagement-hydro-agricole-du-bahr-linia/"
+    },
+    {
+        "Project": "Promote sustainable agriculture in the West African area",
+        "Status": "COMPLETED",
+        "Location": "Burkina Faso; Côte d'Ivoire; Mali; Senegal; Togo",
+        "Partners": "",
+        "Detail": "https://www.food-security.net/en/projet/promouvoir-une-agriculture-durable-dans-lespace-ouest-africain/"
+    },
+    {
+        "Project": "Développer l'agriculture et améliorer la sécurité alimentaire des territoires du tiers sud",
+        "Status": "COMPLETED",
+        "Location": "Senegal",
+        "Partners": "EU; France",
+        "Detail": "https://www.food-security.net/en/projet/developper-lagriculture-et-ameliorer-la-securite-alimentaire-des-territoires-du-tiers-sud/"
+    },
+    {
+        "Project": "Soutenir le développement d'activités rurales et le financement de filières agricoles à Agadez et Tahoua",
+        "Status": "COMPLETED",
+        "Location": "Niger",
+        "Partners": "EU; France",
+        "Detail": "https://www.food-security.net/en/projet/soutenir-le-developpement-dactivites-rurales-et-le-financement-de-filieres-agricoles-a-agadez-et-tahoua/"
+    },
+    {
+        "Project": "Projet d'appui à la sécurité alimentaire des ménages (PASAM 4)",
+        "Status": "COMPLETED",
+        "Location": "Niger",
+        "Partners": "France",
+        "Detail": "https://www.food-security.net/en/projet/projet-dappui-a-la-securite-alimentaire-des-menages-pasam-4/"
+    },
+    {
+        "Project": "Désenclaver les zones de productions agricoles en Guinée maritime et Guinée forestière",
+        "Status": "ONGOING",
+        "Location": "Guinea",
+        "Partners": "France",
+        "Detail": "https://www.food-security.net/en/projet/desenclaver-les-zones-de-productions-agricoles-en-guinee-maritime-et-guinee-forestiere/"
+    },
+    {
+        "Project": "Favoriser une agriculture durable en Côte d'Ivoire",
+        "Status": "ONGOING",
+        "Location": "Côte d'Ivoire",
+        "Partners": "France",
+        "Detail": "https://www.food-security.net/en/projet/favoriser-une-agriculture-durable-en-cote-divoire/"
+    },
+    {
+        "Project": "Projet d'appui à la transition agro-écologique dans les zones cotonnières (TAZCO)",
+        "Status": "COMPLETED",
+        "Location": "Benin",
+        "Partners": "France",
+        "Detail": "https://www.food-security.net/en/projet/projet-dappui-a-la-transition-agro-ecologique-dans-les-zones-cotonnieres-tazco/"
+    },
+    {
+        "Project": "Projet d'appui à l'agriculture dans le département des Collines (PADAC)",
+        "Status": "COMPLETED",
+        "Location": "Benin",
+        "Partners": "France",
+        "Detail": "https://www.food-security.net/en/projet/appui-a-lagriculture-dans-le-departement-des-collines/"
+    },
+    {
+        "Project": "Inclusive development programme in host areas (DIZA)",
+        "Status": "COMPLETED",
+        "Location": "Chad",
+        "Partners": "",
+        "Detail": "https://www.food-security.net/en/projet/programme-de-developpement-inclusif-dans-les-zones-daccueil-diza/"
+    },
+    {
+        "Project": "Resilience and employment in the Lake Chad region (RESTE)",
+        "Status": "COMPLETED",
+        "Location": "Chad",
+        "Partners": "EU",
+        "Detail": "https://www.food-security.net/en/projet/resilience-et-emploi-au-lac-tchad/"
+    },
+    {
+        "Project": "Price stabilization / GMP through the procurement and storage of food communities",
+        "Status": "COMPLETED",
+        "Location": "Nigeria",
+        "Partners": "",
+        "Detail": "https://www.food-security.net/en/projet/price-stabilization-gmp-through-the-procurement-and-storage-of-food-communities/"
+    },
+    {
+        "Project": "Multisectoral action to combat food insecurity and malnutrition",
+        "Status": "COMPLETED",
+        "Location": "Chad",
+        "Partners": "",
+        "Detail": "https://www.food-security.net/en/projet/action-multisectorielle-de-lutte-a-linsecurite-alimentaire-et-a-la-malnutrition-dans-la-region-de-hadjer-lamis/"
+    }
+]

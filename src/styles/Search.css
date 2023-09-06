@@ -1,0 +1,7 @@
+.search-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
