@@ -1,6 +1,6 @@
 
 import React, { useRef, useEffect, useState } from 'react';
-import mapboxgl from '!mapbox-gl';
+import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import Legend from './Legend';
 import App from '../App';
