@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "98ccb52ff3ca8230f6af83afc40ec709",
+    "revision": "6fbd276b78c40e6d1be18230add4e893",
     "url": "/food-security2/index.html"
   },
   {
