@@ -2,24 +2,29 @@ import React from "react";
 import StaticFilterOptions from "./StaticFilterOptions";
 
 const TargetOptions = [
-  "Artisanal fishermen",
-  "Childer aged under 5 years",
-  "Institutions",
-  "Pastoralists & Agro-pastoralists",
-  "Poor households",
-  "Poor workers in the informal economy",
-  "Pregnant and lactating women",
-  "Refugees",
-  "Vulnerable small-scale farmers",
-  "Women",
-  "Youth",
-  // ... other Target options
+  "SDG 1",
+  "SDG 2",
+  "SDG 3",
+  "SDG 4",
+  "SDG 5",
+  "SDG 6",
+  "SDG 7",
+  "SDG 8",
+  "SDG 9",
+  "SDG 10",
+  "SDG 11",
+  "SDG 12",
+  "SDG 13",
+  "SDG 14",
+  "SDG 15",
+  "SDG 16",
+  "SDG 17",
 ];
 
 const SearchBoxTarget = ({ selectedTargets, setSelectedTargets }) => {
   return (
     <StaticFilterOptions
-      title="Target"
+      title="SDG"
       options={TargetOptions}
       selectedOptions={selectedTargets}
       setSelectedOptions={setSelectedTargets}

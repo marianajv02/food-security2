@@ -1,14 +1,14 @@
 import React from "react";
 import StaticFilterOptions from "./StaticFilterOptions";
 
-const staticPartners = [
+const staticPartner = [
     "AfDB",
     "Austria - OEZA",
     "Belgium - Enable",
     "BID",
     "Canada - Global Affairs",
     "Danemark – DANIDA",
-    "DfiD",
+    "FCDO",
     "Espagne – AECID",
     "EU",
     "Fonds africain de développement",
@@ -22,17 +22,19 @@ const staticPartners = [
     "SNV",
     "Switzerland - SDC",
     "The World Bank",
-    "UNICEF"
-  // ... other partner options
+    "UNICEF",
+    "USAID-USA"
+    // ... other partner options
+
 ];
 
-const SearchBoxPartner = ({ selectedPartners, setSelectedPartners }) => {
+const SearchBoxPartner = ({ selectedPartner, setSelectedPartner }) => {
   return (
     <StaticFilterOptions
-      title="Partners"
-      options={staticPartners}
-      selectedOptions={selectedPartners}
-      setSelectedOptions={setSelectedPartners}
+      title="Partner"
+      options={staticPartner}
+      selectedOptions={selectedPartner}
+      setSelectedOptions={setSelectedPartner}
     />
   );
 };

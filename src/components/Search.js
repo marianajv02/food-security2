@@ -2,24 +2,27 @@ import React from "react";
 import SearchBox from "./SearchBox";
 import SearchBoxLocation from "./SearchBoxLocation";
 import SearchBoxPartner from "./SearchBoxPartner";
-import SearchBoxAGIRPillars from "./SearchBoxAGIRPillars";
+import SearchBoxStatus from "./SearchBoxStatus";
 import SearchBoxTopic from "./SearchBoxTopic";
 import SearchBoxTarget from "./SearchBoxTarget";
+import SearchBoxProjectTypes from "./SearchBoxProjectType";
 import "../styles/Search.css";
 
 const Search = ({
   searchQuery,
   setSearchQuery,
-  selectedPartners,
-  setSelectedPartners,
+  selectedPartner,
+  setSelectedPartner,
   selectedLocations,
   setSelectedLocations,
-  selectedAGIRPillars,
-  setSelectedAGIRPillars,
+  selectedStatus,
+  setSelectedStatus,
   selectedTopics,
   setSelectedTopics,
   selectedTargets,
   setSelectedTargets,
+  selectedProjectTypes,
+  setselectedProjectTypes
 }) => {
   return (
     <div className="search-container">
@@ -32,12 +35,12 @@ const Search = ({
         setSelectedLocations={setSelectedLocations}
       />
       <SearchBoxPartner
-        selectedPartners={selectedPartners}
-        setSelectedPartners={setSelectedPartners}
+        selectedPartner={selectedPartner}
+        setSelectedPartner={setSelectedPartner}
       />
-      <SearchBoxAGIRPillars
-        selectedAGIRPillars={selectedAGIRPillars}
-        setSelectedAGIRPillars={setSelectedAGIRPillars}
+      <SearchBoxStatus
+        selectedStatus={selectedStatus}
+        setSelectedStatus={setSelectedStatus}
       />
       <SearchBoxTopic
         selectedTopics={selectedTopics}
@@ -46,6 +49,10 @@ const Search = ({
       <SearchBoxTarget
         selectedTargets={selectedTargets}
         setSelectedTargets={setSelectedTargets}
+      />
+      <SearchBoxProjectTypes
+        selectedProjectTypes={selectedProjectTypes}
+        setselectedProjectTypes={setselectedProjectTypes}
       />
     </div>
   );

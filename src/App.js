@@ -14,11 +14,12 @@ import data from "./data/data.json";
 
 export default function App() {
     const [searchQuery, setSearchQuery] = useState("");
-    const [selectedPartners, setSelectedPartners] = useState([]);
+    const [selectedStatus, setSelectedStatus] = useState([]);
     const [selectedLocations, setSelectedLocations] = useState([]);
-    const [selectedAGIRPillars, setSelectedAGIRPillars] = useState([]);
-    const [selectedTopics, setSelectedTopics] = useState([]);
+    const [selectedPartner, setSelectedPartner] = useState([]);
+    const [selectedProjectTypes, setselectedProjectTypes] = useState([]);
     const [selectedTargets, setSelectedTargets] = useState([]);
+    const [selectedTopics, setSelectedTopics] = useState([]);
 
     const [countryData, setCountryData] = useState(null);
     const [level1Data, setLevel1Data] = useState(null);
@@ -72,11 +73,11 @@ export default function App() {
 
     const filteredDataBlock = data
       .filter((entry) => {
-        if (selectedPartners.length === 0) {
+        if (selectedPartner.length === 0) {
           return true;
         }
         const partnersArray = (entry.Partners || "").split(";").map(partner => partner.trim());
-        return selectedPartners.some((selectedPartner) => partnersArray.includes(selectedPartner));
+        return selectedPartner.some((selectedPartner) => partnersArray.includes(selectedPartner));
       })
       .filter((entry) => {
         if (selectedLocations.length === 0) {
@@ -86,11 +87,11 @@ export default function App() {
         return selectedLocations.some((selectedLocation) => locationsArray.includes(selectedLocation))
       })
       .filter((entry) => {
-        if (selectedAGIRPillars.length === 0) {
+        if (selectedStatus.length === 0) {
           return true;
         }
-        const agirPillarsArray = (entry.AGIRPillars || "").split(";").map(AGIRPillar => AGIRPillar.trim());
-        return selectedAGIRPillars.some((selectedAGIRPillar) => agirPillarsArray.includes(selectedAGIRPillar))
+        const statusArray = (entry.Status || "").split(";").map(status => status.trim());
+        return selectedStatus.some((selectedStatus) => statusArray.includes(selectedStatus))
       })
       .filter((entry) => {
         if (selectedTopics.length === 0) {
@@ -107,6 +108,13 @@ export default function App() {
         return selectedTargets.some((selectedTarget) => targetsArray.includes(selectedTarget))
       })
       .filter((entry) => {
+        if (selectedProjectTypes.length === 0) {
+          return true;
+        }
+        const projectTypesArray = (entry.ProjectType || "").split(";").map(projectType => projectType.trim());
+        return selectedProjectTypes.some((selectedProjectTypes) => projectTypesArray.includes(selectedProjectTypes));
+      })
+      .filter((entry) => {
         if (!searchQuery) {
           return true;
         }
@@ -116,23 +124,24 @@ export default function App() {
 
   return (
     <div>
-      <MapView regionInfo={hoveredRegion} onChangeYear={handleYearChange} onChangeRegion={handleRegionChange} selectedYear={selectedYear} onChangeMonth={handleMonthChange} selectedMonth={selectedMonth}/>
-      
+      <MapView regionInfo={hoveredRegion} onChangeYear={handleYearChange} onChangeRegion={handleRegionChange} selectedYear={selectedYear} onChangeMonth={handleMonthChange} selectedMonth={selectedMonth}/>      
       <Timebar onChangeYear={handleYearChange} selectedYear={selectedYear} onChangeMonth={handleMonthChange} selectedMonth={selectedMonth} />
       <Sidebar countryData={countryData} level1Data={level1Data} level2Data={level2Data} regionInfo={hoveredRegion} onChangeYear={handleYearChange} selectedYear={selectedYear} onChangeMonth={handleMonthChange} selectedMonth={selectedMonth} /> 
       <Search
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
-        selectedPartners={selectedPartners}
-        setSelectedPartners={setSelectedPartners}
+        selectedPartner={selectedPartner}
+        setSelectedPartner={setSelectedPartner}
         selectedLocations={selectedLocations}
         setSelectedLocations={setSelectedLocations}
-        selectedAGIRPillars={selectedAGIRPillars}
-        setSelectedAGIRPillars={setSelectedAGIRPillars}
+        selectedStatus={selectedStatus}
+        setSelectedStatus={setSelectedStatus}
         selectedTopics={selectedTopics}
         setSelectedTopics={setSelectedTopics}
         selectedTargets={selectedTargets}
         setSelectedTargets={setSelectedTargets}
+        selectedProjectTypes={selectedProjectTypes}
+        setselectedProjectTypes={setselectedProjectTypes}
       />
       <DataBlocksList filteredDataBlock={filteredDataBlock} />
 
