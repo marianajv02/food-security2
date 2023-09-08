@@ -1,4 +1,5 @@
 import React from "react";
+import Mapfilter from "./Mapfilter";
 import SearchBox from "./SearchBox";
 import SearchBoxLocation from "./SearchBoxLocation";
 import SearchBoxPartner from "./SearchBoxPartner";

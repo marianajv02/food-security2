@@ -29,6 +29,8 @@ function MapView({selectedYear, selectedMonth, onChangeRegion}) {
     layerNames.forEach(layerName => {
       map.current.on('click', layerName, createLayerClickHandler);
     }); 
+    map.current.addControl(
+      new mapboxgl.NavigationControl()); 
 
 
   };
@@ -51,6 +53,22 @@ function MapView({selectedYear, selectedMonth, onChangeRegion}) {
       name: feature.properties['Name_2'],
       key: feature.properties['Key'] 
     };
+
+    // Center the map on the clicked point with a smooth fly animation
+    const currentZoom = map.current.getZoom();
+    let maxZoom;
+    if (currentZoom < 4.99) {
+      maxZoom = 4.99;
+    } else if (currentZoom > 4.99) {
+      maxZoom = 6.7;
+    }
+    const targetZoom = currentZoom + 1 <= maxZoom ? currentZoom + 1 : maxZoom; //prevent the map from zooming in too much
+    map.current.easeTo({
+      center: [lngLat.lng, lngLat.lat], // Set the center to the clicked coordinates
+      zoom: targetZoom,
+      duration: 1000,
+      curve: 1
+    });
 
     let popup = null;
 

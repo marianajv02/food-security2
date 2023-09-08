@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import StaticFilterOptions from "./StaticFilterOptions";
 import axios from "axios";
-import "./Mapfilter.css";
 import { feature } from "@turf/turf";
 import App from "../App";
 
