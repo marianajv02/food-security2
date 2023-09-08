@@ -1,6 +1,7 @@
 {
   "name": "mapbox-react2",
   "version": "0.1.0",
+  "homepage": "https://zeyu-c.github.io/food-security-project/",
   "private": true,
   "dependencies": {
     "@syncfusion/ej2-react-pivotview": "^22.2.10",
@@ -14,6 +15,7 @@
     "axios": "^0.19.2",
     "create-react-class": "^15.7.0",
     "d3plus-react": "^0.5.8",
+    "fuse.js": "^6.6.2",
     "lodash": "^4.17.21",
     "mapbox-gl": "^2.14.1",
     "query-string": "^6.11.1",
@@ -42,7 +44,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "cross-env REACT_APP_DEPLOYMENT=production react-scripts build && gh-pages -d build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

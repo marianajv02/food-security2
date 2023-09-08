@@ -62,7 +62,7 @@ function MapView({selectedYear, selectedMonth, onChangeRegion}) {
     } else if (currentZoom > 4.99) {
       maxZoom = 6.7;
     }
-    const targetZoom = currentZoom + 1 <= maxZoom ? currentZoom + 1 : maxZoom; //prevent the map from zooming in too much
+    const targetZoom = currentZoom + 0.5 <= maxZoom ? currentZoom + 1 : maxZoom; //prevent the map from zooming in too much
     map.current.easeTo({
       center: [lngLat.lng, lngLat.lat], // Set the center to the clicked coordinates
       zoom: targetZoom,
