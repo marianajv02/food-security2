@@ -143,7 +143,7 @@ export default function App() {
         selectedProjectTypes={selectedProjectTypes}
         setselectedProjectTypes={setselectedProjectTypes}
       />
-      <DataBlocksList filteredDataBlock={filteredDataBlock} />
+      <DataBlocksList filteredDataBlock={filteredDataBlock} countryData={countryData} />
 
     </div>
 

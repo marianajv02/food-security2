@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import DataBlock from "./DataBlock";
 import "../styles/DataBlocksList.css";
 import "../styles/CustomSwitch.css"; // Make sure to import the custom switch styles
+import { centroid } from '@turf/turf';
 
-const DataBlocksList = ({ filteredDataBlock }) => {
+
+const DataBlocksList = ({ filteredDataBlock, countryData }) => {
   const [viewMode, setViewMode] = useState("grid"); // Add view mode state
 
   const toggleViewMode = () => {
@@ -25,26 +27,56 @@ const DataBlocksList = ({ filteredDataBlock }) => {
     document.body.removeChild(link);
   };
 
-  const projectsPerCountry = filteredDataBlock.reduce((acc, entry) => {
-    const locations = entry.Location.split(';').map(location => location.trim());
-  
-    locations.forEach(location => {
-      // Remove spaces from the location and convert it to lowercase
-      const modifiedLocation = location.replace(/\s+/g, '');
-  
-      if (!acc[modifiedLocation]) {
-        acc[modifiedLocation] = 0;
+// Initialize countryProjectArray as an empty array
+let countryProjectArray = [];
+
+const projectsPerCountry = filteredDataBlock.reduce((acc, entry) => {
+  const locations = entry.Location.split(';').map(location => location.trim());
+
+  locations.forEach(location => {
+    // Remove spaces from the location and convert it to lowercase
+    const modifiedLocation = location.replace(/\s+/g, '');
+
+    if (!countryData) {
+      return; // Handle the case when countryData is null or undefined
+    }
+
+    // Loop through countryData to find a matching Country
+    countryData.features.forEach(countryFeature => {
+      const countryProperties = countryFeature.properties;
+      const countryName = countryProperties.Country;
+
+      if (modifiedLocation === countryName) {
+        if (!acc[modifiedLocation]) {
+          acc[modifiedLocation] = {
+            country: modifiedLocation,
+            countProjects: 0,
+            centroid: null,
+          };
+        }
+        acc[modifiedLocation].countProjects++;
+
+        // Calculate the centroid
+        const countryGeometry = countryFeature.geometry;
+        const countryCentroid = centroid(countryGeometry);
+
+        // Add centroid to the countryProjectArray
+        acc[modifiedLocation].centroid = countryCentroid;
       }
-      acc[modifiedLocation]++;
     });
-  
-    return acc;
-  }, {});
-  
-  // Convert the object into an array of [Location, numberProjects]
-  const countryProjectArray = Object.entries(projectsPerCountry).map(([location, count]) => [location.replace(/\s+/g, ' '), count]);
-  console.log(countryProjectArray);
-      
+  });
+
+  return acc;
+}, {});
+
+// Convert the object into an array of objects with named properties
+countryProjectArray = Object.values(projectsPerCountry).map(({ country, countProjects, centroid }) => ({
+  country: country.replace(/\s+/g, ' '),
+  countProjects,
+  centroid,
+}));
+console.log(countryProjectArray);
+        
   return (
     <div className="data-blocks-list">
       <div className="view-mode-switch">
