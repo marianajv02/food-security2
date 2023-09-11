@@ -61,7 +61,7 @@ export default function App() {
     
             const responseLevel2 = await axios.get('/data/output_level2.geojson');
             setLevel2Data(responseLevel2.data);
-              console.log(responseLevel1,responseLevel2,'response levels');
+              console.log(responseCountry,responseLevel1,responseLevel2,'response levels');
 
           } catch (error) {
             console.error('Error fetching data:', error);

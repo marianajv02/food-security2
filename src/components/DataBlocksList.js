@@ -24,7 +24,27 @@ const DataBlocksList = ({ filteredDataBlock }) => {
     link.click();
     document.body.removeChild(link);
   };
+
+  const projectsPerCountry = filteredDataBlock.reduce((acc, entry) => {
+    const locations = entry.Location.split(';').map(location => location.trim());
   
+    locations.forEach(location => {
+      // Remove spaces from the location and convert it to lowercase
+      const modifiedLocation = location.replace(/\s+/g, '');
+  
+      if (!acc[modifiedLocation]) {
+        acc[modifiedLocation] = 0;
+      }
+      acc[modifiedLocation]++;
+    });
+  
+    return acc;
+  }, {});
+  
+  // Convert the object into an array of [Location, numberProjects]
+  const countryProjectArray = Object.entries(projectsPerCountry).map(([location, count]) => [location.replace(/\s+/g, ' '), count]);
+  console.log(countryProjectArray);
+      
   return (
     <div className="data-blocks-list">
       <div className="view-mode-switch">

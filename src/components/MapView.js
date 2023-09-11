@@ -64,7 +64,7 @@ function MapView({selectedYear, selectedMonth, onChangeRegion}) {
     }
     const targetZoom = currentZoom + 0.5 <= maxZoom ? currentZoom + 1 : maxZoom; //prevent the map from zooming in too much
     map.current.easeTo({
-      center: [lngLat.lng, lngLat.lat], // Set the center to the clicked coordinates
+      center: [lngLat.lng.toFixed(4), lngLat.lat.toFixed(4)], // Set the center to the clicked coordinates
       zoom: targetZoom,
       duration: 1000,
       curve: 1
@@ -96,7 +96,7 @@ useEffect(() => {
   if (!map.current) {
     initializeMap();
   } else {
-
+    
     layerNames.forEach(layerName => {
       const existingLayer = map.current.getLayer(layerName);
       if (existingLayer) {
