@@ -47,7 +47,7 @@ export default function App() {
       setHoveredRegion(region);
       
     };
-    
+   
   
 
     useEffect(() => { //la data de draft si cambia porque esta dentro de UseEffect
@@ -120,13 +120,81 @@ export default function App() {
         }
         return entry.Project.toLowerCase().includes(searchQuery.toLowerCase());
       });
-  
+
+      // Calculating projects per country
+      let countryProjectArray = [];
+
+      // Move the logic for creating countryProjectArray here
+      const projectsPerCountry = filteredDataBlock.reduce((acc, entry) => {
+        const locations = entry.Location.split(';').map(location => location.trim());
+
+        locations.forEach(location => {
+          // Remove spaces from the location and convert it to lowercase
+          const modifiedLocation = location.replace(/\s+/g, '');
+
+          if (!countryData) {
+            return; // Handle the case when countryData is null or undefined
+          }
+
+          // Loop through countryData to find a matching Country
+          countryData.features.forEach(countryFeature => {
+            const countryProperties = countryFeature.properties;
+            const countryName = countryProperties.Country;
+
+            if (modifiedLocation === countryName) {
+              if (!acc[modifiedLocation]) {
+                acc[modifiedLocation] = {
+                  country: modifiedLocation,
+                  countProjects: 0,
+                  centroid: null,
+                };
+              }
+              acc[modifiedLocation].countProjects++;
+
+              // Calculate the centroid
+              const countryGeometry = countryFeature.geometry;
+              const countryCentroid = [];
+
+              // Add centroid to the countryProjectArray
+              acc[modifiedLocation].centroid = countryCentroid;
+            }
+          });
+        });
+
+        return acc;
+      }, {});
+
+      // Convert the object into an array of objects with named properties
+      countryProjectArray = Object.values(projectsPerCountry).map(({ country, countProjects, centroid }) => ({
+        country: country.replace(/\s+/g, ' '),
+        countProjects,
+        centroid,
+      }));
 
   return (
     <div>
-      <MapView regionInfo={hoveredRegion} onChangeYear={handleYearChange} onChangeRegion={handleRegionChange} selectedYear={selectedYear} onChangeMonth={handleMonthChange} selectedMonth={selectedMonth}/>      
-      <Timebar onChangeYear={handleYearChange} selectedYear={selectedYear} onChangeMonth={handleMonthChange} selectedMonth={selectedMonth} />
-      <Sidebar countryData={countryData} level1Data={level1Data} level2Data={level2Data} regionInfo={hoveredRegion} onChangeYear={handleYearChange} selectedYear={selectedYear} onChangeMonth={handleMonthChange} selectedMonth={selectedMonth} /> 
+      <MapView
+        regionInfo={hoveredRegion}
+        onChangeYear={handleYearChange}
+        onChangeRegion={handleRegionChange}
+        selectedYear={selectedYear}
+        onChangeMonth={handleMonthChange}
+        selectedMonth={selectedMonth}
+        countryProjectArray={countryProjectArray}/>      
+      <Timebar
+        onChangeYear={handleYearChange}
+        selectedYear={selectedYear}
+        onChangeMonth={handleMonthChange}
+        selectedMonth={selectedMonth} />
+      <Sidebar
+        countryData={countryData}
+        level1Data={level1Data}
+        level2Data={level2Data}
+        regionInfo={hoveredRegion}
+        onChangeYear={handleYearChange}
+        selectedYear={selectedYear}
+        onChangeMonth={handleMonthChange}
+        selectedMonth={selectedMonth} /> 
       <Search
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
@@ -143,8 +211,8 @@ export default function App() {
         selectedProjectTypes={selectedProjectTypes}
         setselectedProjectTypes={setselectedProjectTypes}
       />
-      <DataBlocksList filteredDataBlock={filteredDataBlock} countryData={countryData} />
-
+      <DataBlocksList
+        filteredDataBlock={filteredDataBlock}/>
     </div>
 
 

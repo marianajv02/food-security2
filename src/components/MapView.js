@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -7,16 +6,35 @@ import App from '../App';
 import './MapView.css';
 import Sidebar from './Sidebar';
 import { selected } from '@syncfusion/ej2-react-pivotview';
+import { countryCoordinates } from './Coordinates'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFyaWFuYWp2LSIsImEiOiJjbGs3eXJmbzEwYXR3M2RxbnRuOHVkaHV3In0.rVa0wb_O5OTeuk07J90w5A';
 
-function MapView({selectedYear, selectedMonth, onChangeRegion}) {
+function MapView({ selectedYear, selectedMonth, onChangeRegion, countryProjectArray }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [lng, setLng] = useState(0);
   const [lat, setLat] = useState(17);
   const [zoom, setZoom] = useState(3.4);
   const [hoveredRegion, setHoveredRegion] = useState(null);
+  const features = countryProjectArray.map((project) => {
+    const matchingCoordinate = countryCoordinates.find(({ country }) => country === project.country);
+  
+    return {
+      type: 'Feature',
+      properties: {
+        countryName: project.country,
+        countProjects: project.countProjects
+      },
+      geometry: {
+        type: 'Point',
+        coordinates: matchingCoordinate.coordinates
+      }
+    };
+  });
+  console.log('features', features);
+
+  const layerNames = ['output_country-2uwmmy', 'output_level1-5iewsu', 'output_level2-8nur76'];
 
   const initializeMap = () => {
     map.current = new mapboxgl.Map({
@@ -26,14 +44,94 @@ function MapView({selectedYear, selectedMonth, onChangeRegion}) {
       zoom: zoom
     });
     map.current.on('move', handleMove);
+
     layerNames.forEach(layerName => {
       map.current.on('click', layerName, createLayerClickHandler);
-    }); 
+    });
     map.current.addControl(
-      new mapboxgl.NavigationControl()); 
-
+      new mapboxgl.NavigationControl()
+    );
 
   };
+
+  useEffect(() => {
+    if (map.current) {
+      map.current.on('load', () => {
+        const existingSource = map.current.getSource('projectClusters');
+        
+        if (existingSource) {
+          // Source already exists, update its data
+          existingSource.setData({
+            type: 'FeatureCollection',
+            features: features
+          });
+        } else {
+          // Source doesn't exist, add it
+          map.current.addSource('projectClusters', {
+            type: 'geojson',
+            data: {
+              type: 'FeatureCollection',
+              features: features
+            },
+            cluster: true,
+            clusterMaxZoom: 14,
+            clusterRadius: 50
+          });
+          map.current.addLayer({
+          id: 'projectClusters',
+          type: 'circle',
+          source: 'projectClusters',
+          filter: ['has', 'point_count'],
+          paint: {
+            'circle-color': [
+              'step',
+              ['get', 'point_count'],
+              '#51bbd6',
+              100,
+              '#f1f075',
+              750,
+              '#f28cb1'
+            ],
+            'circle-radius': [
+              'step',
+              ['get', 'point_count'],
+              20,
+              100,
+              30,
+              750,
+              40
+            ]
+          }
+        });
+        map.current.addLayer({
+          id: 'cluster-count',
+          type: 'symbol',
+          source: 'projectClusters',
+          filter: ['has', 'point_count'],
+          layout: {
+            'text-field': ['to-string', ['get', 'countProjects']],
+            'text-font': ['Arial'],
+            'text-size': 12,
+            'text-anchor': 'bottom', // Set text-anchor to "bottom"
+            'text-offset': [0, -10] // Offset the text slightly above the marker
+                  }
+        });
+        map.current.addLayer({
+          id: 'unclustered-point',
+          type: 'circle',
+          source: 'projectClusters',
+          filter: ['!', ['has', 'point_count']],
+          paint: {
+            'circle-color': '#11b4da',
+            'circle-radius': 4,
+            'circle-stroke-width': 1,
+            'circle-stroke-color': '#fff'
+          }
+        });
+        }
+      });
+    }
+  }, [features]);    
 
   const handleMove = () => {
     setLng(map.current.getCenter().lng.toFixed(4));
@@ -41,20 +139,17 @@ function MapView({selectedYear, selectedMonth, onChangeRegion}) {
     setZoom(map.current.getZoom().toFixed(2));
   };
 
-  const layerNames = ['output_country-2uwmmy', 'output_level1-5iewsu', 'output_level2-8nur76'];
+  const createLayerClickHandler = (e) => {
+    console.log('clickhandler ran', e.features);
 
-  const createLayerClickHandler = (e) => {// CLICKHANDLER si lo dejamos en key ya no tiene que depender de year, solo de la posicion 
-    console.log('clickhandler ran', e.features)
-      
     const feature = e.features[0];
     const lngLat = e.lngLat;
 
     const newHoveredRegion = {
       name: feature.properties['Name_2'],
-      key: feature.properties['Key'] 
+      key: feature.properties['Key']
     };
 
-    // Center the map on the clicked point with a smooth fly animation
     const currentZoom = map.current.getZoom();
     let maxZoom;
     if (currentZoom < 4.99) {
@@ -62,9 +157,9 @@ function MapView({selectedYear, selectedMonth, onChangeRegion}) {
     } else if (currentZoom > 4.99) {
       maxZoom = 6.7;
     }
-    const targetZoom = currentZoom + 0.5 <= maxZoom ? currentZoom + 1 : maxZoom; //prevent the map from zooming in too much
+    const targetZoom = currentZoom + 0.5 <= maxZoom ? currentZoom + 1 : maxZoom;
     map.current.easeTo({
-      center: [lngLat.lng.toFixed(4), lngLat.lat.toFixed(4)], // Set the center to the clicked coordinates
+      center: [lngLat.lng.toFixed(4), lngLat.lat.toFixed(4)],
       zoom: targetZoom,
       duration: 1000,
       curve: 1
@@ -81,78 +176,73 @@ function MapView({selectedYear, selectedMonth, onChangeRegion}) {
       maxHeight: '50px',
       className: 'custom-popup'
     })
-    .setLngLat(lngLat)
-    .setHTML(`<h5>${feature.properties.Name_2}</h5>`)
-  .addTo(map.current);
+      .setLngLat(lngLat)
+      .setHTML(`<h5>${feature.properties.Name_2}</h5>`)
+      .addTo(map.current);
 
     onChangeRegion(newHoveredRegion);
-  };//CLICKHANDLER
-  
-// separating useffects
+  };
 
-useEffect(() => {
-  let isMounted = true;
+  useEffect(() => {
+    let isMounted = true;
 
-  if (!map.current) {
-    initializeMap();
-  } else {
-    
-    layerNames.forEach(layerName => {
-      const existingLayer = map.current.getLayer(layerName);
-      if (existingLayer) {
-        map.current.setPaintProperty(
-          layerName,
-          'fill-color',
-          getMapboxExpression(selectedYear, selectedMonth)
-        );
+    // Add a loading delay using setTimeout
+    const loadingTimeout = setTimeout(() => {
+      if (!map.current) {
+        initializeMap();
+      } else {
+        layerNames.forEach(layerName => {
+          const existingLayer = map.current.getLayer(layerName);
+          if (existingLayer) {
+            map.current.setPaintProperty(
+              layerName,
+              'fill-color',
+              getMapboxExpression(selectedYear, selectedMonth)
+            );
+          }
+        });
       }
-    });
-  }
+    }, 60); // Adjust the delay time (in milliseconds) as needed
 
-  return () => {
-    isMounted = false;
-  };
-}, [selectedYear, selectedMonth]);
+    // Clean up the timeout when the component unmounts
+    return () => {
+      clearTimeout(loadingTimeout);
+      isMounted = false;
+    };
+  }, [selectedYear, selectedMonth]);
 
-useEffect(() => {
-  let isMounted = true;
+  useEffect(() => {
+    let isMounted = true;
 
-  if (map.current) {
-    map.current.on('move', handleMove);
-    
-  }
+    if (map.current) {
+      map.current.on('move', handleMove);
+    }
 
-  return () => {
-    isMounted = false;
-  };
-}, [lat, lng, zoom]);
+    return () => {
+      isMounted = false;
+    };
+  }, [lat, lng, zoom]);
 
+  return (
+    <div className='view-container'>
+      <div ref={mapContainer} className="map-container" />
+      <Legend />
+    </div>
+  );
+}
 
-  
-    return (
-      <div className='view-container'>
-        
-        <div ref={mapContainer} className="map-container" />
+function getMapboxExpression(selectedYear, selectedMonth) {
+  const yearValue = parseInt(selectedYear);
+  const monthValue = parseInt(selectedMonth);
 
-        <Legend/>
-      </div>
-      
-    );
-  }
-
-  function getMapboxExpression(selectedYear, selectedMonth) {
-    const yearValue = parseInt(selectedYear);
-    const monthValue = parseInt(selectedMonth);
-    
-    return [
-      'case',
-      ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 1], '#53ca57',
-      ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 2], '#ffe252',
-      ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 3], '#fa890f',
-      ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 4], '#eb3333',
-      '#ffffff'
-    ];
-  }
-
+  return [
+    'case',
+    ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 1], '#53ca57',
+    ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 2], '#ffe252',
+    ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 3], '#fa890f',
+    ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 4], '#eb3333',
+    '#ffffff'
+  ];
+}
 
 export default MapView;
