@@ -1,6 +1,7 @@
 {
   "name": "mapbox-react2",
   "version": "0.1.0",
+  "homepage": "https://marianajv02.github.io/food-security2",
   "private": true,
   "dependencies": {
     "@syncfusion/ej2-react-pivotview": "^22.2.10",
