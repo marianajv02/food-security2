@@ -45,8 +45,16 @@ export default function App() {
       setHoveredRegion(region);
       
     };
-   
-  
+
+    const handleClearAllFilters = () => {
+      setSearchQuery("");
+      setSelectedStatus([]);
+      setSelectedLocations([]);
+      setSelectedPartner([]);
+      setselectedProjectTypes([]);
+      setSelectedTargets([]);
+      setSelectedTopics([]);
+    };
 
     useEffect(() => { //la data de draft si cambia porque esta dentro de UseEffect
         async function fetchData() {
@@ -209,6 +217,7 @@ export default function App() {
         selectedProjectTypes={selectedProjectTypes}
         setselectedProjectTypes={setselectedProjectTypes}
       />
+      <button className="export-button" onClick={handleClearAllFilters}>Clear All Filter</button>
       <DataBlocksList
         filteredDataBlock={filteredDataBlock}/>
     </div>

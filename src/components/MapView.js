@@ -7,6 +7,7 @@ import './MapView.css';
 import Sidebar from './Sidebar';
 import { selected } from '@syncfusion/ej2-react-pivotview';
 import { countryCoordinates } from './Coordinates'
+import { feature } from '@turf/helpers';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFyaWFuYWp2LSIsImEiOiJjbGs3eXJmbzEwYXR3M2RxbnRuOHVkaHV3In0.rVa0wb_O5OTeuk07J90w5A';
 
@@ -37,6 +38,7 @@ function MapView({ selectedYear, selectedMonth, onChangeRegion, countryProjectAr
   const layerNames = ['output_country-2uwmmy', 'output_level1-5iewsu', 'output_level2-8nur76'];
 
   const initializeMap = () => {
+    console.log('Initializing map...');
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/marianajv-/cllf4b5be012q01pb6nqq4k5x',
@@ -61,12 +63,23 @@ function MapView({ selectedYear, selectedMonth, onChangeRegion, countryProjectAr
         const existingSource = map.current.getSource('projectClusters');
         
         if (existingSource) {
+          console.log('Updating existing source data...');
           // Source already exists, update its data
           existingSource.setData({
             type: 'FeatureCollection',
             features: features
           });
+          // Update text label field property
+          console.log('Before updating label text-field:');
+          map.current.setLayoutProperty('projectClusters-labels', 'text-field', [
+            'to-string',
+            ['get', 'countProjects']
+          ]);
+          console.log('After updating label text-field:');
+
+
         } else {
+          console.log('Adding new source...');
           // Source doesn't exist, add it
           map.current.addSource('projectClusters', {
             type: 'geojson',
@@ -78,6 +91,7 @@ function MapView({ selectedYear, selectedMonth, onChangeRegion, countryProjectAr
             clusterMaxZoom: 14,
             clusterRadius: 50
           });
+          console.log('Source added:', 'projectClusters');
           map.current.addLayer({
           id: 'projectClusters-circles',
           type: 'circle',
