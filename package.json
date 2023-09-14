@@ -1,6 +1,7 @@
 {
   "name": "mapbox-react2",
   "version": "0.1.0",
+  "homepage": "http://marianajv02.github.io/food-security2",
   "private": true,
   "dependencies": {
     "@syncfusion/ej2-react-pivotview": "^22.2.10",
@@ -17,7 +18,7 @@
     "lodash": "^4.17.21",
     "mapbox-gl": "^2.14.1",
     "query-string": "^6.11.1",
-    "react": "^16.13.0",
+    "react": "^18.2.0",
     "react-collapse": "^5.1.1",
     "react-css-collapse": "^4.1.0",
     "react-data-table-component": "^6.11.6",
@@ -55,7 +56,11 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "not safari < 10",
+      "not chrome < 51",
+      "not android < 5",
+      "not ie < 12"
     ],
     "development": [
       "last 1 chrome version",
