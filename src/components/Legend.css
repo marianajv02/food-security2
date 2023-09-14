@@ -1,4 +1,4 @@
-/* Legend.css */
+
 
 .legend-container {
     position: absolute;
@@ -26,6 +26,7 @@
     width: 20px;
     height: 20px;
     margin-right: 5px;
+    border: 1px solid black; 
 }
 
 .legend-value {
