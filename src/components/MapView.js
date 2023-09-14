@@ -41,7 +41,8 @@ function MapView({ selectedYear, selectedMonth, onChangeRegion, countryProjectAr
       container: mapContainer.current,
       style: 'mapbox://styles/marianajv-/cllf4b5be012q01pb6nqq4k5x',
       center: [lng, lat],
-      zoom: zoom
+      zoom: zoom,
+      cooperativeGestures: true
     });
     map.current.on('move', handleMove);
 
@@ -78,55 +79,179 @@ function MapView({ selectedYear, selectedMonth, onChangeRegion, countryProjectAr
             clusterRadius: 50
           });
           map.current.addLayer({
-          id: 'projectClusters',
+          id: 'projectClusters-circles',
           type: 'circle',
           source: 'projectClusters',
-          filter: ['has', 'point_count'],
           paint: {
             'circle-color': [
-              'step',
-              ['get', 'point_count'],
-              '#51bbd6',
-              100,
-              '#f1f075',
-              750,
-              '#f28cb1'
-            ],
-            'circle-radius': [
-              'step',
-              ['get', 'point_count'],
+              "interpolate",
+              ["exponential", 1],
+              ["get", "countProjects"],
+              0,
+              "hsl(295, 78%, 73%)",
+              10,
+              "hsl(284, 79%, 71%)",
               20,
+              "hsl(274, 82%, 70%)",
+              40,
+              "hsl(266, 83%, 68%)",
+              60,
+              "hsl(257, 84%, 66%)",
+              80,
+              "hsl(248, 85%, 64%)",
               100,
-              30,
-              750,
-              40
+              "hsl(235, 86%, 60%)"
+            ],
+            "circle-stroke-color": [
+              "interpolate",
+              [
+                "exponential",
+                1
+              ],
+              [
+                "get",
+                "countProjects"
+              ],
+              0,
+              "hsl(295, 78%, 51%)",
+              10,
+              "hsl(284, 79%, 50%)",
+              20,
+              "hsl(274, 82%, 49%)",
+              40,
+              "hsl(266, 83%, 48%)",
+              60,
+              "hsl(257, 84%, 46%)",
+              80,
+              "hsl(248, 85%, 45%)",
+              100,
+              "hsl(235, 86%, 42%)"
+            ],
+            "circle-stroke-width": 0.75,
+            'circle-radius': [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              0,
+              [
+                "*",
+                [
+                  "interpolate",
+                  ["exponential", 1],
+                  [
+                    "get",
+                    "countProjects"
+                  ],
+                  0,
+                  3,
+                  10,
+                  6,
+                  20,
+                  9,
+                  40,
+                  12,
+                  60,
+                  15,
+                  80,
+                  18,
+                  100,
+                  21
+                ],
+                2.7
+              ],
+              5,
+              [
+                "*",
+                [
+                  "interpolate",
+                  ["exponential", 1],
+                  [
+                    "get",
+                    "countProjects"
+                  ],
+                  0,
+                  3,
+                  10,
+                  6,
+                  20,
+                  9,
+                  40,
+                  12,
+                  60,
+                  15,
+                  80,
+                  18,
+                  100,
+                  21
+                ],
+                2.9700000000000006
+              ],
+              10,
+              [
+                "*",
+                [
+                  "interpolate",
+                  ["exponential", 1],
+                  [
+                    "get",
+                    "countProjects"
+                  ],
+                  0,
+                  3,
+                  10,
+                  6,
+                  20,
+                  9,
+                  40,
+                  12,
+                  60,
+                  15,
+                  80,
+                  18,
+                  100,
+                  21
+                ],
+                3.78
+              ],
+              22,
+              [
+                "*",
+                [
+                  "interpolate",
+                  ["exponential", 1],
+                  [
+                    "get",
+                    "countProjects"
+                  ],
+                  0,
+                  3,
+                  10,
+                  6,
+                  20,
+                  9,
+                  40,
+                  12,
+                  60,
+                  15,
+                  80,
+                  18,
+                  100,
+                  21
+                ],
+                5.4
+              ]
             ]
           }
         });
         map.current.addLayer({
-          id: 'cluster-count',
+          id: 'projectClusters-labels',
           type: 'symbol',
           source: 'projectClusters',
-          filter: ['has', 'point_count'],
           layout: {
             'text-field': ['to-string', ['get', 'countProjects']],
-            'text-font': ['Arial'],
+            'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
             'text-size': 12,
-            'text-anchor': 'bottom', // Set text-anchor to "bottom"
-            'text-offset': [0, -10] // Offset the text slightly above the marker
                   }
-        });
-        map.current.addLayer({
-          id: 'unclustered-point',
-          type: 'circle',
-          source: 'projectClusters',
-          filter: ['!', ['has', 'point_count']],
-          paint: {
-            'circle-color': '#11b4da',
-            'circle-radius': 4,
-            'circle-stroke-width': 1,
-            'circle-stroke-color': '#fff'
-          }
         });
         }
       });

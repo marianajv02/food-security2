@@ -5,7 +5,6 @@ import Timebar from './components/Timebar';
 import Sidebar from './components/Sidebar';
 import Draft from './components/Draft';
 import Mapfilter from './components/Mapfilter';
-import DraftRow from './components/DraftRow';
 import Search from "./components/Search";
 import DataBlocksList from "./components/DataBlocksList";
 import data from "./data/data.json";
