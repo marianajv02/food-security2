@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import MapView from './components/MapView';
-import Table from './components/Table';
 import Timebar from './components/Timebar';
 import Sidebar from './components/Sidebar';
 import Draft from './components/Draft';
@@ -53,13 +52,13 @@ export default function App() {
     useEffect(() => { //la data de draft si cambia porque esta dentro de UseEffect
         async function fetchData() {
           try {
-            const responseCountry = await axios.get('/data/output_country.geojson');
+            const responseCountry = await axios.get('./data/output_country.geojson');
             setCountryData(responseCountry.data);
     
-            const responseLevel1 = await axios.get('/data/output_level1.geojson');
+            const responseLevel1 = await axios.get('./data/output_level1.geojson');
             setLevel1Data(responseLevel1.data);
     
-            const responseLevel2 = await axios.get('/data/output_level2.geojson');
+            const responseLevel2 = await axios.get('./data/output_level2.geojson');
             setLevel2Data(responseLevel2.data);
               console.log(responseCountry,responseLevel1,responseLevel2,'response levels');
 

@@ -1,18 +1,17 @@
-import React from "react";
+import React from 'react';
 
-export const ExpendableButton = ({ isOpen, toggle }) => {
+export const ExpendableButton = ({ isOpen, toggle, countryName }) => {
   return (
-    <button onClick={toggle}>
+    <button onClick={() => toggle(countryName)}>
       <span
-        class="material-symbols-outlined"
+        className="material-symbols-outlined"
         style={{
           transform: `rotate(${isOpen ? 180 : 0}deg)`,
-          transition: "all 0.25s",
+          transition: 'all 0.25s',
         }}
       >
         expand_more
       </span>
-      
     </button>
   );
 };

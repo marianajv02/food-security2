@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
+    <base href="/food-security2/">
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
@@ -12,6 +17,19 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+
+
+<div id='map' style='width: 4px; height: 3px;'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoibWFyaWFuYWp2LSIsImEiOiJjbGs3eXJmbzEwYXR3M2RxbnRuOHVkaHV3In0.rVa0wb_O5OTeuk07J90w5A';
+//const map = new mapboxgl.Map({
+//    container: 'map', // container ID
+//    style: 'mapbox://styles/marianajv-/cllf4b5be012q01pb6nqq4k5x', // style URL
+//    center: [0, 17], // starting position [lng, lat]
+//    zoom: 3.4, // starting zoom
+//});
+</script>
+
     
   </body>
 </html>
