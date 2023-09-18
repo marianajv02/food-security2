@@ -58,7 +58,7 @@ function MapView({ selectedYear, selectedMonth, onChangeRegion, countryProjectAr
   };
 
   useEffect(() => {
-    if (map.current) {
+    if (map.current && features && features.length > 0) {
       map.current.on('load', () => {
         const existingSource = map.current.getSource('projectClusters');
         
@@ -70,14 +70,12 @@ function MapView({ selectedYear, selectedMonth, onChangeRegion, countryProjectAr
             features: features
           });
           // Update text label field property
-          console.log('Before updating label text-field:');
           map.current.setLayoutProperty('projectClusters-labels', 'text-field', [
             'to-string',
             ['get', 'countProjects']
           ]);
-          console.log('After updating label text-field:');
-
-
+          console.log('Source data updated:', 'projectClusters');
+          
         } else {
           console.log('Adding new source...');
           // Source doesn't exist, add it

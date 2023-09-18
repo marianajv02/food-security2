@@ -15,6 +15,7 @@
     "axios": "^0.19.2",
     "create-react-class": "^15.7.0",
     "d3plus-react": "^0.5.8",
+    "downshift": "^8.1.0",
     "fuse.js": "^6.6.2",
     "lodash": "^4.17.21",
     "mapbox-gl": "^2.14.1",
