@@ -37,6 +37,29 @@ function MapView({ selectedYear, selectedMonth, onChangeRegion, countryProjectAr
 
   const layerNames = ['output_country-2uwmmy', 'output_level1-5iewsu', 'output_level2-8nur76'];
 
+  const addBoundaryToMap = () => {
+    const countryBoundary = {
+      id: 'output_country-2uwmmw',
+      minzoom: 0,
+      maxzoom: 22,
+      type: 'line',
+      paint: {
+        'line-opacity': 1,
+        'line-width': 2.5,
+        "line-color": "#045226"  
+      },
+      source: 'composite',
+      'source-layer': 'output_country-2uwmmy',
+      layout: {
+        'line-cap': 'round',
+        'line-join': 'round'
+      }
+    };
+
+    // Add the custom layer to the map
+    map.current.addLayer(countryBoundary);
+  };
+
   const initializeMap = () => {
     console.log('Initializing map...');
     map.current = new mapboxgl.Map({
@@ -79,6 +102,7 @@ function MapView({ selectedYear, selectedMonth, onChangeRegion, countryProjectAr
         } else {
           console.log('Adding new source...');
           // Source doesn't exist, add it
+          addBoundaryToMap();
           map.current.addSource('projectClusters', {
             type: 'geojson',
             data: {
@@ -87,7 +111,7 @@ function MapView({ selectedYear, selectedMonth, onChangeRegion, countryProjectAr
             },
             cluster: true,
             clusterMaxZoom: 14,
-            clusterRadius: 50
+            clusterRadius: 0
           });
           console.log('Source added:', 'projectClusters');
           map.current.addLayer({
