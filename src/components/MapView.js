@@ -67,6 +67,7 @@ function MapView({ selectedYear, selectedMonth, onChangeRegion, countryProjectAr
       style: 'mapbox://styles/marianajv-/cllf4b5be012q01pb6nqq4k5x',
       center: [lng, lat],
       zoom: zoom,
+      minZoom: 2.6,
       cooperativeGestures: true
     });
     map.current.on('move', handleMove);
@@ -111,7 +112,7 @@ function MapView({ selectedYear, selectedMonth, onChangeRegion, countryProjectAr
             },
             cluster: true,
             clusterMaxZoom: 14,
-            clusterRadius: 0
+            clusterRadius: 10
           });
           console.log('Source added:', 'projectClusters');
           map.current.addLayer({
