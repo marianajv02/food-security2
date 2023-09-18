@@ -3,7 +3,7 @@ import axios from 'axios';
 import MapView from './components/MapView';
 import Timebar from './components/Timebar';
 import Sidebar from './components/Sidebar';
-import Draft from './components/Draft';
+import Table from './components/Table';
 import Mapfilter from './components/Mapfilter';
 
 export default function App() {
@@ -36,7 +36,7 @@ export default function App() {
     
   
 
-    useEffect(() => { //la data de draft si cambia porque esta dentro de UseEffect
+    useEffect(() => { 
         async function fetchData() {
           try {
             const responseCountry = await axios.get('./data/output_country.geojson');
@@ -61,14 +61,13 @@ export default function App() {
 
   return (
     <div>
-      <MapView regionInfo={hoveredRegion} onChangeYear={handleYearChange} onChangeRegion={handleRegionChange} selectedYear={selectedYear} onChangeMonth={handleMonthChange} selectedMonth={selectedMonth}/>
+      <MapView countryData={countryData} regionInfo={hoveredRegion} onChangeYear={handleYearChange} onChangeRegion={handleRegionChange} selectedYear={selectedYear} onChangeMonth={handleMonthChange} selectedMonth={selectedMonth}/>
       
       <Timebar onChangeYear={handleYearChange} selectedYear={selectedYear} onChangeMonth={handleMonthChange} selectedMonth={selectedMonth} />
       <Sidebar countryData={countryData} level1Data={level1Data} level2Data={level2Data} regionInfo={hoveredRegion} onChangeYear={handleYearChange} selectedYear={selectedYear} onChangeMonth={handleMonthChange} selectedMonth={selectedMonth} /> 
       <Mapfilter handleFilteredDataChange={handleFilteredDataChange}/>
-      <Draft countryData={filteredData.filteredCountryData} level1Data={level1Data} level2Data={level2Data} onChangeYear={handleYearChange} selectedYear={selectedYear} onChangeMonth={handleMonthChange} selectedMonth={selectedMonth}/>
-      {/* <div><Table countryData={filteredData.filteredCountryData} level1Data={level1Data} level2Data={level2Data} onChangeYear={handleYearChange} selectedYear={selectedYear} onChangeMonth={handleMonthChange} selectedMonth={selectedMonth}/></div> */}
-
+      <Table countryData={filteredData.filteredCountryData} level1Data={level1Data} level2Data={level2Data} onChangeYear={handleYearChange} selectedYear={selectedYear} onChangeMonth={handleMonthChange} selectedMonth={selectedMonth}/>
+      
     
       
 

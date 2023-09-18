@@ -4,9 +4,9 @@ import App from '../App';
 import Timebar from './Timebar';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
-import './Draft.css';
+import './Table.css';
 
-const Draft = ({ countryData, level1Data, level2Data, selectedYear, selectedMonth }) => {
+const Table = ({ countryData, level1Data, level2Data, selectedYear, selectedMonth }) => {
   // console.log(selectedMonth);
 
   const [columnDefs, setColumnDefs] = useState([
@@ -74,7 +74,6 @@ const Draft = ({ countryData, level1Data, level2Data, selectedYear, selectedMont
     // expand
     const columnToCheck = columnsToCheck[rowLevel];
     const cellValue = clickedRowData[columnToCheck];
-    console.log(clickedRowData);
     const data = [level1Data.features, level2Data.features].map((featureSet) => featureSet.map((feature) => formatFeature(feature, selectedYear, selectedMonth)));
     const filteredRows = data[rowLevel]
       .filter((feature) => feature[columnToCheck] === cellValue)
@@ -177,4 +176,4 @@ function getNameByLevel(feature, level = 0){
 
 
 
-export default Draft;
+export default Table;

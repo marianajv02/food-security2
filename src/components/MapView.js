@@ -10,7 +10,8 @@ import { selected } from '@syncfusion/ej2-react-pivotview';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFyaWFuYWp2LSIsImEiOiJjbGs3eXJmbzEwYXR3M2RxbnRuOHVkaHV3In0.rVa0wb_O5OTeuk07J90w5A';
 
-function MapView({selectedYear, selectedMonth, onChangeRegion}) {
+function MapView({selectedYear, selectedMonth, onChangeRegion, countryData}) {
+  console.log(countryData, 'mapview comp');
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [lng, setLng] = useState(0);
@@ -42,7 +43,7 @@ function MapView({selectedYear, selectedMonth, onChangeRegion}) {
   const layerNames = ['output_country-2uwmmy', 'output_level1-5iewsu', 'output_level2-8nur76'];
 
   const createLayerClickHandler = (e) => {// CLICKHANDLER si lo dejamos en key ya no tiene que depender de year, solo de la posicion 
-    console.log('clickhandler ran', e.features)
+    //console.log('clickhandler ran',  e.features)
       
     const feature = e.features[0];
     const lngLat = e.lngLat;
@@ -79,13 +80,18 @@ useEffect(() => {
     initializeMap();
   } else {
 
+    ///
+
+    ///
+
     layerNames.forEach(layerName => {
       const existingLayer = map.current.getLayer(layerName);
       if (existingLayer) {
         map.current.setPaintProperty(
-          layerName,
+           layerName,
           'fill-color',
-          getMapboxExpression(selectedYear, selectedMonth)
+          getMapboxExpression(selectedYear, selectedMonth, countryData)
+          
         );
       }
     });
@@ -122,19 +128,33 @@ useEffect(() => {
     );
   }
 
-  function getMapboxExpression(selectedYear, selectedMonth) {
+  function getMapboxExpression(selectedYear, selectedMonth, countryData) {
     const yearValue = parseInt(selectedYear);
     const monthValue = parseInt(selectedMonth);
+    const propertyExists = countryData.features.some((feature) => {
+      const propertyName = `CLAS-${yearValue}-0${monthValue}`;
+      return propertyName in feature.properties;
+    });
     
-    return [
-      'case',
-      ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 1], '#53ca57',
-      ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 2], '#ffe252',
-      ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 3], '#fa890f',
-      ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 4], '#eb3333',
-      '#ffffff'
-    ];
+    if (propertyExists) {
+      return [
+        'case',
+        ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 1], '#53ca57',
+        ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 2], '#ffe252',
+        ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 3], '#fa890f',
+        ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 4], '#eb3333',
+        '#ffffff'
+      ]
+    } else {
+      return '#ffffff';
+
+    }
+    
+;
   }
+  
+
+  
 
 
 export default MapView;
