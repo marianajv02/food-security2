@@ -2,8 +2,8 @@
 
 .legend-container {
     position: absolute;
-    bottom: 370px; /* Adjust the distance from the bottom */
-    right: 20px; /* Adjust the distance from the right */
+    bottom: 60%; /* Adjust the distance from the bottom */
+    right: 1%; /* Adjust the distance from the right */
     background-color: white;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 4px;

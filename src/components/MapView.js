@@ -95,7 +95,25 @@ useEffect(() => {
         );
       }
     });
-  }
+
+
+    // Check and update the fill pattern for the separate layer "output_protocol-7nndf6"
+    {/*const separateLayerName = "output_protocol-7nndf6";
+    const existingSeparateLayer = map.current.getLayer(separateLayerName);
+    
+    if (existingSeparateLayer) {
+      // Add your logic here to set the image pattern based on different conditions
+      const imagePattern = getImagePatternBasedOnConditions(); // Replace with your logic
+      map.current.setPaintProperty(
+        separateLayerName,
+        'fill-pattern',
+        imagePattern
+      );
+    }
+  */}
+}
+
+  
 
   return () => {
     isMounted = false;
