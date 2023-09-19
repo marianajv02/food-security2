@@ -3,7 +3,7 @@ import axios from 'axios';
 import MapView from './components/MapView';
 import Timebar from './components/Timebar';
 import Sidebar from './components/Sidebar';
-import Draft from './components/Draft';
+import Table from './components/Table';
 import Mapfilter from './components/Mapfilter';
 import Search from "./components/Search";
 import DataBlocksList from "./components/DataBlocksList";
@@ -56,7 +56,7 @@ export default function App() {
       setSelectedTopics([]);
     };
 
-    useEffect(() => { //la data de draft si cambia porque esta dentro de UseEffect
+    useEffect(() => { 
         async function fetchData() {
           try {
             const responseCountry = await axios.get('./data/output_country.geojson');
@@ -178,8 +178,9 @@ export default function App() {
       }));
 
   return (
-    <div>
+    <div className="container">
       <MapView
+        countryData={countryData}
         regionInfo={hoveredRegion}
         onChangeYear={handleYearChange}
         onChangeRegion={handleRegionChange}
@@ -221,7 +222,5 @@ export default function App() {
       <DataBlocksList
         filteredDataBlock={filteredDataBlock}/>
     </div>
-
-
   );
 }

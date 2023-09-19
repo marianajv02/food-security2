@@ -4,6 +4,7 @@ import App from '../App';
 
 function Sidebar({ countryData, level1Data, level2Data, regionInfo, selectedYear, selectedMonth }) { //REGIONINFO TRAE EL KEY
   const [appendedData, setAppendedData] = useState([]);
+
   
 
   useEffect(() => {
@@ -63,7 +64,7 @@ function Sidebar({ countryData, level1Data, level2Data, regionInfo, selectedYear
     <nav className='sidebar'>
       <div className='sidebar-container'>
         <div className='logo'>
-          <img src='/images/family_icon.jpg' alt='Family Icon' />
+        <img src={process.env.PUBLIC_URL + '/images/family_icon.jpg'} alt='Family Icon' />
           <span className='logo-text'>Food and nutrition situation {selectedYear} </span> {/* adding selected month as trial*/}
         </div>
 
