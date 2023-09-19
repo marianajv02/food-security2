@@ -6,12 +6,11 @@ import Legend from './Legend';
 import App from '../App';
 import './MapView.css';
 import Sidebar from './Sidebar';
-import { selected } from '@syncfusion/ej2-react-pivotview';
+
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFyaWFuYWp2LSIsImEiOiJjbGs3eXJmbzEwYXR3M2RxbnRuOHVkaHV3In0.rVa0wb_O5OTeuk07J90w5A';
 
-function MapView({selectedYear, selectedMonth, onChangeRegion, countryData}) {
-  console.log(countryData, 'mapview comp');
+function MapView({selectedYear, selectedMonth, onChangeRegion, countryData, protocoleData}) {
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [lng, setLng] = useState(0);
@@ -24,8 +23,22 @@ function MapView({selectedYear, selectedMonth, onChangeRegion, countryData}) {
       container: mapContainer.current,
       style: 'mapbox://styles/marianajv-/cllf4b5be012q01pb6nqq4k5x',
       center: [lng, lat],
-      zoom: zoom
-    });
+      zoom: zoom,
+      sources: {
+        // ... other sources ...
+        'stripes': {
+          type: 'image',
+          url: '/images/stripes2.jpg', // Path to your local image file
+          coordinates: [
+            [0, 0],
+            [1, 0],
+            [1, 1],
+            [0, 1]
+          ]
+        },
+      
+    }
+  });
     map.current.on('move', handleMove);
     layerNames.forEach(layerName => {
       map.current.on('click', layerName, createLayerClickHandler);
@@ -42,8 +55,7 @@ function MapView({selectedYear, selectedMonth, onChangeRegion, countryData}) {
 
   const layerNames = ['output_country-2uwmmy', 'output_level1-5iewsu', 'output_level2-8nur76'];
 
-  const createLayerClickHandler = (e) => {// CLICKHANDLER si lo dejamos en key ya no tiene que depender de year, solo de la posicion 
-    //console.log('clickhandler ran',  e.features)
+  const createLayerClickHandler = (e) => { 
       
     const feature = e.features[0];
     const lngLat = e.lngLat;
@@ -69,9 +81,9 @@ function MapView({selectedYear, selectedMonth, onChangeRegion, countryData}) {
   .addTo(map.current);
 
     onChangeRegion(newHoveredRegion);
-  };//CLICKHANDLER
+  };
   
-// separating useffects
+
 
 useEffect(() => {
   let isMounted = true;
@@ -79,10 +91,6 @@ useEffect(() => {
   if (!map.current) {
     initializeMap();
   } else {
-
-    ///
-
-    ///
 
     layerNames.forEach(layerName => {
       const existingLayer = map.current.getLayer(layerName);
@@ -96,21 +104,17 @@ useEffect(() => {
       }
     });
 
-
-    // Check and update the fill pattern for the separate layer "output_protocol-7nndf6"
-    {/*const separateLayerName = "output_protocol-7nndf6";
+    const separateLayerName = "output-protocol-7nndf6";
     const existingSeparateLayer = map.current.getLayer(separateLayerName);
     
     if (existingSeparateLayer) {
-      // Add your logic here to set the image pattern based on different conditions
-      const imagePattern = getImagePatternBasedOnConditions(); // Replace with your logic
       map.current.setPaintProperty(
         separateLayerName,
         'fill-pattern',
-        imagePattern
+        getStripesExpression(selectedYear, selectedMonth, protocoleData)
       );
     }
-  */}
+  
 }
 
   
@@ -166,11 +170,31 @@ useEffect(() => {
     } else {
       return '#ffffff';
 
-    }
-    
-;
+    };
   }
-  
+
+  function getStripesExpression(selectedYear, selectedMonth, protocoleData) {
+    
+    const yearValue = parseInt(selectedYear);
+    const monthValue = parseInt(selectedMonth);
+    const propertyExists = protocoleData.features.some((feature) => {
+      const propertyName = `PROT-${yearValue}-0${monthValue}`;
+      console.log(propertyName);
+      return propertyName in feature.properties;
+      
+    });
+      
+    if (propertyExists) {
+      return [
+        'case',
+        ['==', ['number', ['get', `PROT-${yearValue}-0${monthValue}`]], 1],'stripes',
+        'transparent' 
+      ];
+    } else {
+      return 'transparent'; 
+    
+  }
+}
 
   
 
