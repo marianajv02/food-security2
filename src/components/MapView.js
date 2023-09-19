@@ -84,9 +84,7 @@ function MapView({ selectedYear, selectedMonth, onChangeRegion, countryProjectAr
 
   useEffect(() => {
     if (map.current && features && features.length > 0) {
-      map.current.on('load', () => {
         const existingSource = map.current.getSource('projectClusters');
-        
         if (existingSource) {
           console.log('Updating existing source data...');
           // Source already exists, update its data
@@ -291,8 +289,7 @@ function MapView({ selectedYear, selectedMonth, onChangeRegion, countryProjectAr
             'text-size': 12,
                   }
         });
-        }
-      });
+      }
     }
   }, [features]);    
 
