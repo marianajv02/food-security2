@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8fe1bb2786f223301cb92a21598cb3c1",
+    "revision": "526a5f9facbf5c4cc0fb6f27f259d922",
     "url": "/food-security2/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/food-security2/static/css/2.44583bd4.chunk.css"
   },
   {
-    "revision": "0b223f1945298196f1e4",
+    "revision": "30be8c5899efb322c0fd",
     "url": "/food-security2/static/css/main.6f728dd1.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/food-security2/static/js/2.2d4a0b0b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "0b223f1945298196f1e4",
-    "url": "/food-security2/static/js/main.96e8826a.chunk.js"
+    "revision": "30be8c5899efb322c0fd",
+    "url": "/food-security2/static/js/main.83d94475.chunk.js"
   },
   {
     "revision": "d7f6fbd8e9915f1671e7",
