@@ -22,6 +22,7 @@ export default function App() {
     const [countryData, setCountryData] = useState(null);
     const [level1Data, setLevel1Data] = useState(null);
     const [level2Data, setLevel2Data] = useState(null);//for diff layers
+    const [protocoleData, setProtocoleData]= useState(null);
     const [selectedYear, setSelectedYear] = useState(2023);
     const [selectedMonth, setSelectedMonth] = useState(3);
     const [hoveredRegion, setHoveredRegion] = useState(null);
@@ -67,7 +68,10 @@ export default function App() {
     
             const responseLevel2 = await axios.get('./data/output_level2.geojson');
             setLevel2Data(responseLevel2.data);
-              console.log(responseCountry,responseLevel1,responseLevel2,'response levels');
+
+            const responseProtocole = await axios.get('./data/output_protocol.geojson');
+            setProtocoleData(responseProtocole.data);
+              
 
           } catch (error) {
             console.error('Error fetching data:', error);
@@ -180,6 +184,7 @@ export default function App() {
   return (
     <div className="container">
       <MapView
+        protocoleData={protocoleData}
         countryData={countryData}
         regionInfo={hoveredRegion}
         onChangeYear={handleYearChange}

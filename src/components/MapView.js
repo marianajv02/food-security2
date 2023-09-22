@@ -5,13 +5,11 @@ import Legend from './Legend';
 import App from '../App';
 import './MapView.css';
 import Sidebar from './Sidebar';
-import { selected } from '@syncfusion/ej2-react-pivotview';
 import { countryCoordinates } from './Coordinates'
-import { feature } from '@turf/helpers';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFyaWFuYWp2LSIsImEiOiJjbGs3eXJmbzEwYXR3M2RxbnRuOHVkaHV3In0.rVa0wb_O5OTeuk07J90w5A';
 
-function MapView({ selectedYear, selectedMonth, onChangeRegion, countryProjectArray, countryData }) {
+function MapView({ selectedYear, selectedMonth, onChangeRegion, countryProjectArray, countryData, protocoleData }) {
   console.log(countryData, 'mapview comp');
   const mapContainer = useRef(null);
   const map = useRef(null);
@@ -69,7 +67,20 @@ function MapView({ selectedYear, selectedMonth, onChangeRegion, countryProjectAr
       center: [lng, lat],
       zoom: zoom,
       minZoom: 2.6,
-      cooperativeGestures: true
+      cooperativeGestures: true,
+      sources: {
+        // ... other sources ...
+        'stripes': {
+          type: 'image',
+          url: '/images/stripes2.jpg', // Path to your local image file
+          coordinates: [
+            [0, 0],
+            [1, 0],
+            [1, 1],
+            [0, 1]
+          ]
+        },
+      }
     });
     map.current.on('move', handleMove);
 
@@ -299,8 +310,7 @@ function MapView({ selectedYear, selectedMonth, onChangeRegion, countryProjectAr
     setZoom(map.current.getZoom().toFixed(2));
   };
 
-  const createLayerClickHandler = (e) => {// CLICKHANDLER si lo dejamos en key ya no tiene que depender de year, solo de la posicion 
-    //console.log('clickhandler ran',  e.features)
+  const createLayerClickHandler = (e) => {
       
     const feature = e.features[0];
     const lngLat = e.lngLat;
@@ -346,13 +356,11 @@ function MapView({ selectedYear, selectedMonth, onChangeRegion, countryProjectAr
   useEffect(() => {
     let isMounted = true;
 
+    setTimeout(() => {console.log("Waiting data for 60 milliseconds.")}, 60);
+
   if (!map.current) {
     initializeMap();
   } else {
-
-    ///
-
-    ///
 
     layerNames.forEach(layerName => {
       const existingLayer = map.current.getLayer(layerName);
@@ -366,21 +374,17 @@ function MapView({ selectedYear, selectedMonth, onChangeRegion, countryProjectAr
       }
     });
 
-
-    // Check and update the fill pattern for the separate layer "output_protocol-7nndf6"
-    {/*const separateLayerName = "output_protocol-7nndf6";
+    const separateLayerName = "output-protocol-7nndf6";
     const existingSeparateLayer = map.current.getLayer(separateLayerName);
     
     if (existingSeparateLayer) {
-      // Add your logic here to set the image pattern based on different conditions
-      const imagePattern = getImagePatternBasedOnConditions(); // Replace with your logic
       map.current.setPaintProperty(
         separateLayerName,
         'fill-pattern',
-        imagePattern
+        getStripesExpression(selectedYear, selectedMonth, protocoleData)
       );
     }
-  */}
+  
 }
 
   }, [selectedYear, selectedMonth]);
@@ -428,10 +432,30 @@ function MapView({ selectedYear, selectedMonth, onChangeRegion, countryProjectAr
     } else {
       return '#ffffff';
 
-    }
-    
-;
+    };
   }
 
+  function getStripesExpression(selectedYear, selectedMonth, protocoleData) {
+    
+    const yearValue = parseInt(selectedYear);
+    const monthValue = parseInt(selectedMonth);
+    const propertyExists = protocoleData.features.some((feature) => {
+      const propertyName = `PROT-${yearValue}-0${monthValue}`;
+      console.log(propertyName);
+      return propertyName in feature.properties;
+      
+    });
+      
+    if (propertyExists) {
+      return [
+        'case',
+        ['==', ['number', ['get', `PROT-${yearValue}-0${monthValue}`]], 1],'stripes',
+        'transparent' 
+      ];
+    } else {
+      return 'transparent'; 
+    
+  }
+}
 
 export default MapView;
