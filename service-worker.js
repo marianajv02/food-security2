@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/food-security2/precache-manifest.dfe24bc097857d8a97e58f9c31e0f8d9.js"
+  "/food-security2/precache-manifest.3259fe3b619e9b208e5cce9398644f8e.js"
 );
 
 self.addEventListener('message', (event) => {
