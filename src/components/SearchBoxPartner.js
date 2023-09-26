@@ -1,5 +1,6 @@
 import React from "react";
 import StaticFilterOptions from "./StaticFilterOptions";
+import partnerImage from "../assets/partner.svg";
 
 const staticPartner = [
     "AfDB",
@@ -31,7 +32,7 @@ const staticPartner = [
 const SearchBoxPartner = ({ selectedPartner, setSelectedPartner }) => {
   return (
     <StaticFilterOptions
-      title="Partner"
+      title={<img src={partnerImage} alt="partner" />}
       options={staticPartner}
       selectedOptions={selectedPartner}
       setSelectedOptions={setSelectedPartner}

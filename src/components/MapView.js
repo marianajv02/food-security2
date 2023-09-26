@@ -356,8 +356,6 @@ function MapView({ selectedYear, selectedMonth, onChangeRegion, countryProjectAr
   useEffect(() => {
     let isMounted = true;
 
-    setTimeout(() => {console.log("Waiting data for 60 milliseconds.")}, 60);
-
   if (!map.current) {
     initializeMap();
   } else {

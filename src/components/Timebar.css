@@ -1,7 +1,7 @@
 .timebar {
   position:absolute;
   display: flex;
-  top: 0.6%;
+  bottom: 73%;
   left: 1.5%;
   align-items: center;
   flex-direction: column;

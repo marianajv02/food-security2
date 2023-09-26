@@ -1,5 +1,6 @@
 import React from "react";
 import StaticFilterOptions from "./StaticFilterOptions";
+import statusImage from "../assets/status.svg";
 
 const StatusOptions = [
     "ONGOING",
@@ -10,7 +11,7 @@ const StatusOptions = [
 const SearchBoxStatus = ({ selectedStatus, setSelectedStatus }) => {
   return (
     <StaticFilterOptions
-      title="Status"
+      title={<img src={statusImage} alt="status" />}
       options={StatusOptions}
       selectedOptions={selectedStatus}
       setSelectedOptions={setSelectedStatus}

@@ -182,50 +182,56 @@ export default function App() {
       }));
 
   return (
-    <div className="container">
-      <MapView
-        protocoleData={protocoleData}
-        countryData={countryData}
-        regionInfo={hoveredRegion}
-        onChangeYear={handleYearChange}
-        onChangeRegion={handleRegionChange}
-        selectedYear={selectedYear}
-        onChangeMonth={handleMonthChange}
-        selectedMonth={selectedMonth}
-        countryProjectArray={countryProjectArray}/>      
-      <Timebar
-        onChangeYear={handleYearChange}
-        selectedYear={selectedYear}
-        onChangeMonth={handleMonthChange}
-        selectedMonth={selectedMonth} />
-      <Sidebar
-        countryData={countryData}
-        level1Data={level1Data}
-        level2Data={level2Data}
-        regionInfo={hoveredRegion}
-        onChangeYear={handleYearChange}
-        selectedYear={selectedYear}
-        onChangeMonth={handleMonthChange}
-        selectedMonth={selectedMonth} /> 
-      <Search
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        selectedPartner={selectedPartner}
-        setSelectedPartner={setSelectedPartner}
-        selectedLocations={selectedLocations}
-        setSelectedLocations={setSelectedLocations}
-        selectedStatus={selectedStatus}
-        setSelectedStatus={setSelectedStatus}
-        selectedTopics={selectedTopics}
-        setSelectedTopics={setSelectedTopics}
-        selectedTargets={selectedTargets}
-        setSelectedTargets={setSelectedTargets}
-        selectedProjectTypes={selectedProjectTypes}
-        setselectedProjectTypes={setselectedProjectTypes}
-      />
-      <button className="export-button" onClick={handleClearAllFilters}>Clear All Filter</button>
-      <DataBlocksList
-        filteredDataBlock={filteredDataBlock}/>
+    <div>
+      <div className="container">
+        <Search
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          selectedPartner={selectedPartner}
+          setSelectedPartner={setSelectedPartner}
+          selectedLocations={selectedLocations}
+          setSelectedLocations={setSelectedLocations}
+          selectedStatus={selectedStatus}
+          setSelectedStatus={setSelectedStatus}
+          selectedTopics={selectedTopics}
+          setSelectedTopics={setSelectedTopics}
+          selectedTargets={selectedTargets}
+          setSelectedTargets={setSelectedTargets}
+          selectedProjectTypes={selectedProjectTypes}
+          setselectedProjectTypes={setselectedProjectTypes}
+        />
+        <button className="export-button" onClick={handleClearAllFilters}>Clear All Filter</button>
+      </div>
+      <div className='container'>
+        <MapView
+          protocoleData={protocoleData}
+          countryData={countryData}
+          regionInfo={hoveredRegion}
+          onChangeYear={handleYearChange}
+          onChangeRegion={handleRegionChange}
+          selectedYear={selectedYear}
+          onChangeMonth={handleMonthChange}
+          selectedMonth={selectedMonth}
+          countryProjectArray={countryProjectArray}/>      
+        <Timebar
+          onChangeYear={handleYearChange}
+          selectedYear={selectedYear}
+          onChangeMonth={handleMonthChange}
+          selectedMonth={selectedMonth} />
+        <Sidebar
+          countryData={countryData}
+          level1Data={level1Data}
+          level2Data={level2Data}
+          regionInfo={hoveredRegion}
+          onChangeYear={handleYearChange}
+          selectedYear={selectedYear}
+          onChangeMonth={handleMonthChange}
+          selectedMonth={selectedMonth} /> 
+      </div>
+      <div className='container'>
+        <DataBlocksList
+          filteredDataBlock={filteredDataBlock}/>
+      </div>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import StaticFilterOptions from "./StaticFilterOptions";
+import topicImage from "../assets/topic.svg";
 
 const TopicOptions = [
   "Agriculture",
@@ -25,7 +26,7 @@ const TopicOptions = [
 const SearchBoxTopic = ({ selectedTopics, setSelectedTopics }) => {
   return (
     <StaticFilterOptions
-      title="Topic"
+      title={<img src={topicImage} alt="topic" />}
       options={TopicOptions}
       selectedOptions={selectedTopics}
       setSelectedOptions={setSelectedTopics}

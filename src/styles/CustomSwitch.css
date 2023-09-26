@@ -83,17 +83,17 @@
   
   /* Styles for the export button */
   .export-button {
-    cursor: pointer;
-    padding: 5px 10px;
-    justify-content: center;
-    background-color: green;
-    color: white;
-    border-radius: 5px;
-    flex-shrink: 0;
-    width: fit-content;
-  }
+    display: inline-block;
+    border: 2px solid green;
+    width: 64px; /* Adjust the width to the desired size for a square */
+    height: 64px; /* Adjust the height to the desired size for a square */
+    overflow: hidden;
+    background-color: white;
+    color: rgb(0, 73, 0);
+    padding: 5px;  }
   
   .export-button:hover {
     background-color: rgb(0, 73, 0);
+    color: white;
   }
   

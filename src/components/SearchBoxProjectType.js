@@ -1,5 +1,6 @@
 import React from "react";
 import StaticFilterOptions from "./StaticFilterOptions";
+import typeImage from "../assets/type.svg";
 
 const staticProjectTypes = [
     "Humanitarian Aid",
@@ -10,7 +11,7 @@ const staticProjectTypes = [
 const SearchBoxProjectTypes = ({ selectedProjectTypes, setselectedProjectTypes }) => {
   return (
     <StaticFilterOptions
-      title="Project Type"
+      title={<img src={typeImage} alt="type" />}
       options={staticProjectTypes}
       selectedOptions={selectedProjectTypes}
       setSelectedOptions={setselectedProjectTypes}

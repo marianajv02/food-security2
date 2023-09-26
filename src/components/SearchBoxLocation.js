@@ -1,5 +1,6 @@
 import React from "react";
 import StaticFilterOptions from "./StaticFilterOptions";
+import locationImage from "../assets/location.svg";
 
 const Countries = [
   "Benin",
@@ -26,7 +27,7 @@ const Countries = [
 const SearchBoxLocation = ({ selectedLocations, setSelectedLocations }) => {
   return (
     <StaticFilterOptions
-      title="Location"
+      title={<img src={locationImage} alt="location" />}
       options={Countries}
       selectedOptions={selectedLocations}
       setSelectedOptions={setSelectedLocations}

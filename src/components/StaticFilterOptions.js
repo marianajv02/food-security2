@@ -1,91 +1,101 @@
-import React, { useState, useRef, useEffect } from "react";
-import PropTypes from "prop-types";
-import "./StaticFilterOptions.css";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import '../styles/StaticFilterOptions.css';
+import Downshift from 'downshift';
 
 const StaticFilterOptions = ({ title, options, selectedOptions, setSelectedOptions }) => {
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [searchText, setSearchText] = useState("");
+  const [inputValue, setInputValue] = useState('');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
-  const dropdownRef = useRef(null);
+  const handleSelection = (selectedItem) => {
+    if (!selectedItem) return;
 
-  const handleDocumentClick = (event) => {
-    if (!dropdownRef.current.contains(event.target)) {
-      setShowDropdown(false);
-    }
+    setSelectedOptions((prevSelectedOptions) => {
+      if (prevSelectedOptions.includes(selectedItem)) {
+        return prevSelectedOptions.filter((option) => option !== selectedItem);
+      } else {
+        return [...prevSelectedOptions, selectedItem];
+      }
+    });
+    setInputValue('');  // Clear the input value when an item is selected
   };
 
-  useEffect(() => {
-    document.addEventListener("click", handleDocumentClick);
-    return () => {
-      document.removeEventListener("click", handleDocumentClick);
-    };
-  }, []);
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  const filteredOptions = options.filter(option =>
+    !selectedOptions.includes(option) && option.toLowerCase().includes(inputValue.toLowerCase())
+  );
 
   const handleSelectAll = () => {
-    if (selectedOptions.length === options.length) {
-      setSelectedOptions([]);
-    } else {
-      setSelectedOptions(options);
-    }
+    const allOptions = options.filter(option => !selectedOptions.includes(option));
+    setSelectedOptions([...selectedOptions, ...allOptions]);
   };
 
-  const handleOptionToggle = (option) => {
-    if (selectedOptions.includes(option)) {
-      setSelectedOptions(selectedOptions.filter((selectedOption) => selectedOption !== option));
-    } else {
-      setSelectedOptions([...selectedOptions, option]);
-    }
+  const handleClearAll = () => {
+    setSelectedOptions([]);
   };
-
-  const handleSearchChange = (e) => {
-    setSearchText(e.target.value);
-  };
-
-  const filteredOptions = options
-    .filter(option => option != null)
-    .filter((option) => option.toLowerCase().includes(searchText.toLowerCase())
-  );
 
   return (
     <div className="filter-container">
-      <label>{title}:</label>
-      <div className="search-dropdown" ref={dropdownRef}>
-        <input
-          type="text"
-          placeholder={`Search by ${title}`}
-          value={searchText}
-          onChange={handleSearchChange}
-          onClick={() => setShowDropdown(true)}
-        />
-        {showDropdown && (
-          <div className="checkbox-list">
-            <div>
+      <label
+        className="label"
+        onClick={() => { setIsVisible(!isVisible); }}>
+        {title}
+      </label>
+      {isVisible &&
+        <Downshift
+          inputValue={inputValue}
+          onChange={(selection) => handleSelection(selection)}
+          selectedItem={null}
+          itemToString={(item) => (item ? item : '')}
+          isOpen={isMenuOpen}  // Control menu visibility manually
+          onOuterClick={() => setIsMenuOpen(false)}  // Close menu on click outside
+        >
+          {({
+            getInputProps,
+            getToggleButtonProps,
+            getMenuProps,
+            getItemProps,
+            isOpen,
+            inputValue,
+            highlightedIndex,
+            toggleMenu,  // Toggle menu visibility
+          }) => (
+            <div style={{ position: 'relative', display: 'inline-block' }}>
               <input
-                type="checkbox"
-                id={`selectAll${title}`}
-                value={`selectAll${title}`}
-                checked={selectedOptions.length === options.length}
-                onChange={handleSelectAll}
+                {...getInputProps({ placeholder: selectedOptions.length > 0 ? selectedOptions.join(', ') : `Click to search by ${title.props.alt}`, onChange: handleInputChange })}
+                className="dropdown-toggle"
+                onClick={() => {
+                  toggleMenu();  // Toggle menu on input click
+                  setIsMenuOpen(!isMenuOpen);  // Toggle menu visibility
+                }}
               />
-              <label htmlFor={`selectAll${title}`}>Select All</label>
+              {isOpen ? (
+                <div className="dropdown-menu" {...getMenuProps()}>
+                  <div className="select-all-button" onClick={() => handleSelectAll()}>{`Select all`}</div>
+                  <div className="clear-all-button" onClick={() => handleClearAll()}>{`Clear all`}</div>
+                  {filteredOptions.map((item, index) => (
+                    <div
+                      key={item}
+                      {...getItemProps({
+                        index,
+                        item,
+                        style: {
+                          backgroundColor: highlightedIndex === index ? '#bde4ff' : 'white',
+                        },
+                      })}
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              ) : null}
             </div>
-            {filteredOptions.map((option) => (
-              <div key={option}>
-                <input
-                  type="checkbox"
-                  id={option}
-                  value={option}
-                  checked={selectedOptions.includes(option)}
-                  onChange={() => handleOptionToggle(option)}
-                />
-                <label htmlFor={option}>
-                  <span>{option}</span>
-                </label>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
+          )}
+        </Downshift>}
     </div>
   );
 };

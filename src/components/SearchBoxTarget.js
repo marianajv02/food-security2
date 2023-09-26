@@ -1,5 +1,6 @@
 import React from "react";
 import StaticFilterOptions from "./StaticFilterOptions";
+import sdgImage from "../assets/SDG.png";
 
 const TargetOptions = [
   "SDG 1",
@@ -24,7 +25,7 @@ const TargetOptions = [
 const SearchBoxTarget = ({ selectedTargets, setSelectedTargets }) => {
   return (
     <StaticFilterOptions
-      title="SDG"
+      title={<img src={sdgImage} alt="SDG" />}
       options={TargetOptions}
       selectedOptions={selectedTargets}
       setSelectedOptions={setSelectedTargets}

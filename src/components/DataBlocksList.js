@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import DataBlock from "./DataBlock";
 import "../styles/DataBlocksList.css";
 import "../styles/CustomSwitch.css"; // Make sure to import the custom switch styles
-import { centroid } from '@turf/turf';
 
 
 const DataBlocksList = ({ filteredDataBlock }) => {
@@ -30,12 +29,9 @@ const DataBlocksList = ({ filteredDataBlock }) => {
   return (
     <div className="data-blocks-list">
       <div className="view-mode-switch">
-        <span>Grid</span>
-        <label className="switch">
-          <input type="checkbox" onChange={toggleViewMode} />
-          <span className="slider round"></span>
-        </label>
-        <span>List</span>
+      <button className={`export-button ${viewMode === 'list' ? 'list-view' : 'grid-view'}`} onClick={toggleViewMode}>
+          {viewMode === 'list' ? 'To Grid' : 'To List'}
+        </button>
       </div>
       <button className="export-button" onClick={exportToCSV}>Export to CSV</button>
       <div className={viewMode === "grid" ? "data-blocks-grid" : "data-blocks-list"}>
