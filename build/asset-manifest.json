@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/food-security-project/static/css/main.5266b8a2.chunk.css",
+    "main.js": "/food-security-project/static/js/main.21332599.chunk.js",
+    "main.js.map": "/food-security-project/static/js/main.21332599.chunk.js.map",
+    "runtime-main.js": "/food-security-project/static/js/runtime-main.c8911e8c.js",
+    "runtime-main.js.map": "/food-security-project/static/js/runtime-main.c8911e8c.js.map",
+    "static/css/2.44583bd4.chunk.css": "/food-security-project/static/css/2.44583bd4.chunk.css",
+    "static/js/2.d7fe98ea.chunk.js": "/food-security-project/static/js/2.d7fe98ea.chunk.js",
+    "static/js/2.d7fe98ea.chunk.js.map": "/food-security-project/static/js/2.d7fe98ea.chunk.js.map",
+    "index.html": "/food-security-project/index.html",
+    "precache-manifest.c8eb8a18d2a98c3d5ba9c0750d43fcdd.js": "/food-security-project/precache-manifest.c8eb8a18d2a98c3d5ba9c0750d43fcdd.js",
+    "service-worker.js": "/food-security-project/service-worker.js",
+    "static/css/2.44583bd4.chunk.css.map": "/food-security-project/static/css/2.44583bd4.chunk.css.map",
+    "static/css/main.5266b8a2.chunk.css.map": "/food-security-project/static/css/main.5266b8a2.chunk.css.map",
+    "static/js/2.d7fe98ea.chunk.js.LICENSE.txt": "/food-security-project/static/js/2.d7fe98ea.chunk.js.LICENSE.txt",
+    "static/media/SDG.png": "/food-security-project/static/media/SDG.6a4a77f1.png",
+    "static/media/location-dot-solid.svg": "/food-security-project/static/media/location-dot-solid.835ddace.svg",
+    "static/media/location.svg": "/food-security-project/static/media/location.994e37d5.svg",
+    "static/media/partner.svg": "/food-security-project/static/media/partner.46ff379d.svg",
+    "static/media/picture-placeholder.png": "/food-security-project/static/media/picture-placeholder.ae02891c.png",
+    "static/media/project.svg": "/food-security-project/static/media/project.a0bc7288.svg",
+    "static/media/status.svg": "/food-security-project/static/media/status.5eb705b5.svg",
+    "static/media/topic.svg": "/food-security-project/static/media/topic.a3ac3372.svg",
+    "static/media/type.svg": "/food-security-project/static/media/type.7c81011c.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c8911e8c.js",
+    "static/css/2.44583bd4.chunk.css",
+    "static/js/2.d7fe98ea.chunk.js",
+    "static/css/main.5266b8a2.chunk.css",
+    "static/js/main.21332599.chunk.js"
+  ]
+}
