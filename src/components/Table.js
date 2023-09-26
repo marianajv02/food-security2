@@ -10,7 +10,7 @@ const Table = ({ countryData, level1Data, level2Data, selectedYear, selectedMont
   // console.log(selectedMonth);
 
   const [columnDefs, setColumnDefs] = useState([
-    { field: 'Country', rowgroup: true, hide: false, headerClass: 'custom-header', width: 100 },
+    { field: 'Country', rowgroup: true, hide: false, headerClass: 'custom-header', cellClass: 'custom-cell-bold', width: 100 },
     { field: 'Level1', rowgroup: true, hide: false, headerClass: 'custom-header', width: 100 },
     { field: 'Level2', rowgroup: true, hide: false, headerClass: 'custom-header', width: 100 },
     { field: 'Population', headerClass: 'custom-header', width: 120 },

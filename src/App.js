@@ -69,7 +69,7 @@ export default function App() {
     <Timebar onChangeYear={handleYearChange} selectedYear={selectedYear} onChangeMonth={handleMonthChange} selectedMonth={selectedMonth} />
     <Sidebar countryData={countryData} level1Data={level1Data} level2Data={level2Data} regionInfo={hoveredRegion} onChangeYear={handleYearChange} selectedYear={selectedYear} onChangeMonth={handleMonthChange} selectedMonth={selectedMonth} /> 
     <Mapfilter handleFilteredDataChange={handleFilteredDataChange}/>
-    <Table countryData={filteredData.filteredCountryData} level1Data={level1Data} level2Data={level2Data} onChangeYear={handleYearChange} selectedYear={selectedYear} onChangeMonth={handleMonthChange} selectedMonth={selectedMonth}/>
+    <Table countryData={filteredData.filteredCountryData} level1Data={filteredData.filteredLevel1Data} level2Data={filteredData.filteredLevel2Data} onChangeYear={handleYearChange} selectedYear={selectedYear} onChangeMonth={handleMonthChange} selectedMonth={selectedMonth}/>
 </div>
 
 

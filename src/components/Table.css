@@ -17,6 +17,10 @@
   
 }
 
+.custom-cell-bold{
+  font-weight: bold;
+}
+
 .custom-header1 {
   background-color: #53ca57 ;
   color: rgb(0, 0, 0);
