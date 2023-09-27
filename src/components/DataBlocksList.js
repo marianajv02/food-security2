@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import DataBlock from "./DataBlock";
 import "../styles/DataBlocksList.css";
 import "../styles/CustomSwitch.css"; // Make sure to import the custom switch styles
-
+import gridImage from "../assets/grid.svg";
+import listImage from "../assets/list.svg";
+import csvImage from "../assets/csv.svg";
 
 const DataBlocksList = ({ filteredDataBlock }) => {
   const [viewMode, setViewMode] = useState("grid"); // Add view mode state
@@ -30,10 +32,10 @@ const DataBlocksList = ({ filteredDataBlock }) => {
     <div className="data-blocks-list">
       <div className="view-mode-switch">
       <button className={`export-button ${viewMode === 'list' ? 'list-view' : 'grid-view'}`} onClick={toggleViewMode}>
-          {viewMode === 'list' ? 'To Grid' : 'To List'}
+          {viewMode === 'list' ? <img src={gridImage} title="To Grid" /> : <img src={listImage} title="To List" />}
         </button>
       </div>
-      <button className="export-button" onClick={exportToCSV}>Export to CSV</button>
+      <button className="export-button" onClick={exportToCSV}><img src={csvImage} title="Export to CSV" /></button>
       <div className={viewMode === "grid" ? "data-blocks-grid" : "data-blocks-list"}>
         {filteredDataBlock.map((entry, index) => (
           <DataBlock

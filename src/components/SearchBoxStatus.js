@@ -11,7 +11,7 @@ const StatusOptions = [
 const SearchBoxStatus = ({ selectedStatus, setSelectedStatus }) => {
   return (
     <StaticFilterOptions
-      title={<img src={statusImage} alt="status" />}
+      title={<img src={statusImage} title="Status" />}
       options={StatusOptions}
       selectedOptions={selectedStatus}
       setSelectedOptions={setSelectedStatus}

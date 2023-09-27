@@ -25,7 +25,7 @@ const TargetOptions = [
 const SearchBoxTarget = ({ selectedTargets, setSelectedTargets }) => {
   return (
     <StaticFilterOptions
-      title={<img src={sdgImage} alt="SDG" />}
+      title={<img src={sdgImage} title="Goal" />}
       options={TargetOptions}
       selectedOptions={selectedTargets}
       setSelectedOptions={setSelectedTargets}

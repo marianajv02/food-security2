@@ -11,7 +11,7 @@ const staticProjectTypes = [
 const SearchBoxProjectTypes = ({ selectedProjectTypes, setselectedProjectTypes }) => {
   return (
     <StaticFilterOptions
-      title={<img src={typeImage} alt="type" />}
+      title={<img src={typeImage} title="Type" />}
       options={staticProjectTypes}
       selectedOptions={selectedProjectTypes}
       setSelectedOptions={setselectedProjectTypes}

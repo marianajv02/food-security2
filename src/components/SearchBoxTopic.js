@@ -26,7 +26,7 @@ const TopicOptions = [
 const SearchBoxTopic = ({ selectedTopics, setSelectedTopics }) => {
   return (
     <StaticFilterOptions
-      title={<img src={topicImage} alt="topic" />}
+      title={<img src={topicImage} title="Topic" />}
       options={TopicOptions}
       selectedOptions={selectedTopics}
       setSelectedOptions={setSelectedTopics}

@@ -1,5 +1,5 @@
 import React from "react";
-import locationIcon from "../assets/location-dot-solid.svg"
+import locationIcon from "../assets/location.svg"
 import picPlaceholder from "../assets/picture-placeholder.png"
 import "../styles/DataBlock.css"
 

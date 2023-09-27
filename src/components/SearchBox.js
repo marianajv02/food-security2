@@ -5,7 +5,7 @@ const SearchBox = ({ searchQuery, setSearchQuery }) => {
   const [isVisible, setIsVisible] = useState(false);
   return (
     <div className="filter-container">
-      <label className="label" onClick={() => { setIsVisible(!isVisible);}}><img src={projectImage} alt="project" /></label>
+      <label className="label" onClick={() => { setIsVisible(!isVisible);}}><img src={projectImage} title="Project" /></label>
       {isVisible && 
         <div className="search-dropdown">
           <input className="dropdown-toggle"

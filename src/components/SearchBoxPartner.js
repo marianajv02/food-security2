@@ -32,7 +32,7 @@ const staticPartner = [
 const SearchBoxPartner = ({ selectedPartner, setSelectedPartner }) => {
   return (
     <StaticFilterOptions
-      title={<img src={partnerImage} alt="partner" />}
+      title={<img src={partnerImage} title="Partner" />}
       options={staticPartner}
       selectedOptions={selectedPartner}
       setSelectedOptions={setSelectedPartner}

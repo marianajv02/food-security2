@@ -27,7 +27,7 @@ const Countries = [
 const SearchBoxLocation = ({ selectedLocations, setSelectedLocations }) => {
   return (
     <StaticFilterOptions
-      title={<img src={locationImage} alt="location" />}
+      title={<img src={locationImage} title="Location" />}
       options={Countries}
       selectedOptions={selectedLocations}
       setSelectedOptions={setSelectedLocations}

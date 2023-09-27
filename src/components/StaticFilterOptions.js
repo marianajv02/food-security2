@@ -41,7 +41,7 @@ const StaticFilterOptions = ({ title, options, selectedOptions, setSelectedOptio
   return (
     <div className="filter-container">
       <label
-        className="label"
+        className={`label ${isVisible ? 'highlighted' : ''}`}
         onClick={() => { setIsVisible(!isVisible); }}>
         {title}
       </label>
@@ -66,7 +66,7 @@ const StaticFilterOptions = ({ title, options, selectedOptions, setSelectedOptio
           }) => (
             <div style={{ position: 'relative', display: 'inline-block' }}>
               <input
-                {...getInputProps({ placeholder: selectedOptions.length > 0 ? selectedOptions.join(', ') : `Click to search by ${title.props.alt}`, onChange: handleInputChange })}
+                {...getInputProps({ placeholder: selectedOptions.length > 0 ? selectedOptions.join(', ') : `Click to search by ${title.props.title.toLowerCase()}`, onChange: handleInputChange })}
                 className="dropdown-toggle"
                 onClick={() => {
                   toggleMenu();  // Toggle menu on input click
