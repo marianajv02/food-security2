@@ -5,6 +5,7 @@ import Timebar from './components/Timebar';
 import Sidebar from './components/Sidebar';
 import Table from './components/Table';
 import Mapfilter from './components/Mapfilter';
+import TimeTable from './components/TimeTable';
 
 export default function App() {
     const [countryData, setCountryData] = useState(null);
@@ -64,15 +65,25 @@ export default function App() {
     
 
   return (
-<div className="container">
-    <MapView protocoleData={protocoleData} countryData={countryData} regionInfo={hoveredRegion} onChangeYear={handleYearChange} onChangeRegion={handleRegionChange} selectedYear={selectedYear} onChangeMonth={handleMonthChange} selectedMonth={selectedMonth}/>
-    <Timebar onChangeYear={handleYearChange} selectedYear={selectedYear} onChangeMonth={handleMonthChange} selectedMonth={selectedMonth} />
-    <Sidebar countryData={countryData} level1Data={level1Data} level2Data={level2Data} regionInfo={hoveredRegion} onChangeYear={handleYearChange} selectedYear={selectedYear} onChangeMonth={handleMonthChange} selectedMonth={selectedMonth} /> 
-    <Mapfilter handleFilteredDataChange={handleFilteredDataChange}/>
-    <Table countryData={filteredData.filteredCountryData} level1Data={filteredData.filteredLevel1Data} level2Data={filteredData.filteredLevel2Data} onChangeYear={handleYearChange} selectedYear={selectedYear} onChangeMonth={handleMonthChange} selectedMonth={selectedMonth}/>
+<div>
+
+  <div className="container">
+      <MapView protocoleData={protocoleData} countryData={countryData} regionInfo={hoveredRegion} onChangeYear={handleYearChange} onChangeRegion={handleRegionChange} selectedYear={selectedYear} onChangeMonth={handleMonthChange} selectedMonth={selectedMonth}/>
+    <div>
+      <Timebar onChangeYear={handleYearChange} selectedYear={selectedYear} onChangeMonth={handleMonthChange} selectedMonth={selectedMonth} />
+ 
+      <Sidebar countryData={countryData} level1Data={level1Data} level2Data={level2Data} regionInfo={hoveredRegion} onChangeYear={handleYearChange} selectedYear={selectedYear} onChangeMonth={handleMonthChange} selectedMonth={selectedMonth} /> 
+    </div>
+  </div>
+  <div className="container">
+      <Mapfilter handleFilteredDataChange={handleFilteredDataChange}/>
+
+      <Table countryData={filteredData.filteredCountryData} level1Data={filteredData.filteredLevel1Data} level2Data={filteredData.filteredLevel2Data} onChangeYear={handleYearChange} selectedYear={selectedYear} onChangeMonth={handleMonthChange} selectedMonth={selectedMonth}/>
+  </div>
+  <div></div>
+     {/* <div className='container'><TimeTable countryData={countryData}></TimeTable> </div>*/}
+
 </div>
-
-
 
   );
 }

@@ -154,17 +154,29 @@ useEffect(() => {
     const yearValue = parseInt(selectedYear);
     const monthValue = parseInt(selectedMonth);
     const propertyExists = countryData.features.some((feature) => {
-      const propertyName = `CLAS-${yearValue}-0${monthValue}`;
+      let propertyName;
+      if (monthValue === 11) {
+        propertyName = `CLAS-${yearValue}-${monthValue}`;
+      } else {
+        propertyName = `CLAS-${yearValue}-0${monthValue}`;
+      }
+      console.log(propertyName);
       return propertyName in feature.properties;
     });
     
     if (propertyExists) {
+      let propertyName;
+      if (monthValue === 11) {
+        propertyName = `CLAS-${yearValue}-${monthValue}`;
+      } else {
+        propertyName = `CLAS-${yearValue}-0${monthValue}`;
+      }
       return [
         'case',
-        ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 1], '#53ca57',
-        ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 2], '#ffe252',
-        ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 3], '#fa890f',
-        ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 4], '#eb3333',
+        ['==', ['number', ['get', propertyName]], 1], '#53ca57',
+        ['==', ['number', ['get', propertyName]], 2], '#ffe252',
+        ['==', ['number', ['get', propertyName]], 3], '#fa890f',
+        ['==', ['number', ['get', propertyName]], 4], '#eb3333',
         '#ffffff'
       ]
     } else {
@@ -178,16 +190,28 @@ useEffect(() => {
     const yearValue = parseInt(selectedYear);
     const monthValue = parseInt(selectedMonth);
     const propertyExists = protocoleData.features.some((feature) => {
-      const propertyName = `PROT-${yearValue}-0${monthValue}`;
+      let propertyName;
+      if (monthValue === 11) {
+        propertyName = `PROT-${yearValue}-${monthValue}`;
+      } else {
+        propertyName = `PROT-${yearValue}-0${monthValue}`;
+      }
       console.log(propertyName);
       return propertyName in feature.properties;
       
     });
       
     if (propertyExists) {
+      let propertyName;
+      if (monthValue === 11) {
+        propertyName = `PROT-${yearValue}-${monthValue}`;
+      } else {
+        propertyName = `PROT-${yearValue}-0${monthValue}`;
+      }
+      console.log(propertyName,'stripes function');
       return [
         'case',
-        ['==', ['number', ['get', `PROT-${yearValue}-0${monthValue}`]], 1],'stripes',
+        ['==', ['number', ['get', propertyName]], 1],'stripes',
         'transparent' 
       ];
     } else {

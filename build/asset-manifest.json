@@ -1,25 +1,13 @@
 {
   "files": {
-    "main.css": "/food-security2/static/css/main.bc8606ed.chunk.css",
-    "main.js": "/food-security2/static/js/main.1c1be38c.chunk.js",
-    "main.js.map": "/food-security2/static/js/main.1c1be38c.chunk.js.map",
-    "runtime-main.js": "/food-security2/static/js/runtime-main.6fa33123.js",
-    "runtime-main.js.map": "/food-security2/static/js/runtime-main.6fa33123.js.map",
-    "static/css/2.44583bd4.chunk.css": "/food-security2/static/css/2.44583bd4.chunk.css",
-    "static/js/2.2d4a0b0b.chunk.js": "/food-security2/static/js/2.2d4a0b0b.chunk.js",
-    "static/js/2.2d4a0b0b.chunk.js.map": "/food-security2/static/js/2.2d4a0b0b.chunk.js.map",
+    "main.css": "/food-security2/static/css/main.8d10150c.css",
+    "main.js": "/food-security2/static/js/main.e2c50be1.js",
     "index.html": "/food-security2/index.html",
-    "precache-manifest.3259fe3b619e9b208e5cce9398644f8e.js": "/food-security2/precache-manifest.3259fe3b619e9b208e5cce9398644f8e.js",
-    "service-worker.js": "/food-security2/service-worker.js",
-    "static/css/2.44583bd4.chunk.css.map": "/food-security2/static/css/2.44583bd4.chunk.css.map",
-    "static/css/main.bc8606ed.chunk.css.map": "/food-security2/static/css/main.bc8606ed.chunk.css.map",
-    "static/js/2.2d4a0b0b.chunk.js.LICENSE.txt": "/food-security2/static/js/2.2d4a0b0b.chunk.js.LICENSE.txt"
+    "main.8d10150c.css.map": "/food-security2/static/css/main.8d10150c.css.map",
+    "main.e2c50be1.js.map": "/food-security2/static/js/main.e2c50be1.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.6fa33123.js",
-    "static/css/2.44583bd4.chunk.css",
-    "static/js/2.2d4a0b0b.chunk.js",
-    "static/css/main.bc8606ed.chunk.css",
-    "static/js/main.1c1be38c.chunk.js"
+    "static/css/main.8d10150c.css",
+    "static/js/main.e2c50be1.js"
   ]
 }
