@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/food-security2/static/css/main.8d10150c.css",
-    "main.js": "/food-security2/static/js/main.e2c50be1.js",
+    "main.css": "/food-security2/static/css/main.5db87ca6.css",
+    "main.js": "/food-security2/static/js/main.6d3041a5.js",
     "index.html": "/food-security2/index.html",
-    "main.8d10150c.css.map": "/food-security2/static/css/main.8d10150c.css.map",
-    "main.e2c50be1.js.map": "/food-security2/static/js/main.e2c50be1.js.map"
+    "main.5db87ca6.css.map": "/food-security2/static/css/main.5db87ca6.css.map",
+    "main.6d3041a5.js.map": "/food-security2/static/js/main.6d3041a5.js.map"
   },
   "entrypoints": [
-    "static/css/main.8d10150c.css",
-    "static/js/main.e2c50be1.js"
+    "static/css/main.5db87ca6.css",
+    "static/js/main.6d3041a5.js"
   ]
 }

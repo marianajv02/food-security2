@@ -13,9 +13,9 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibWFyaWFuYWp2LSIsImEiOiJjbGs3eXJmbzEwYXR3M2Rxb
 function MapView({selectedYear, selectedMonth, onChangeRegion, countryData, protocoleData}) {
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const [lng, setLng] = useState(0);
-  const [lat, setLat] = useState(17);
-  const [zoom, setZoom] = useState(3.4);
+  const [lng, setLng] = useState(-10);
+  const [lat, setLat] = useState(18);
+  const [zoom, setZoom] = useState(4.2);
   const [hoveredRegion, setHoveredRegion] = useState(null);
 
   const initializeMap = () => {
@@ -160,7 +160,7 @@ useEffect(() => {
       } else {
         propertyName = `CLAS-${yearValue}-0${monthValue}`;
       }
-      console.log(propertyName);
+
       return propertyName in feature.properties;
     });
     
@@ -173,7 +173,7 @@ useEffect(() => {
       }
       return [
         'case',
-        ['==', ['number', ['get', propertyName]], 1], '#53ca57',
+        ['==', ['number', ['get', propertyName]], 1], '#d3f3d4',
         ['==', ['number', ['get', propertyName]], 2], '#ffe252',
         ['==', ['number', ['get', propertyName]], 3], '#fa890f',
         ['==', ['number', ['get', propertyName]], 4], '#eb3333',
@@ -196,7 +196,7 @@ useEffect(() => {
       } else {
         propertyName = `PROT-${yearValue}-0${monthValue}`;
       }
-      console.log(propertyName);
+
       return propertyName in feature.properties;
       
     });
@@ -208,7 +208,7 @@ useEffect(() => {
       } else {
         propertyName = `PROT-${yearValue}-0${monthValue}`;
       }
-      console.log(propertyName,'stripes function');
+
       return [
         'case',
         ['==', ['number', ['get', propertyName]], 1],'stripes',

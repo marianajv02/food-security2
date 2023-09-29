@@ -1,6 +1,17 @@
 .timetable-container {
-    position: relative;;
-    height: 800px;
-    margin-top: 500px;
-
+    position: absolute;
+    width: 1200px; 
+    height: 800px; 
+    margin-top: 200px; 
+    margin-left: 600px; 
+    text-align: center;
 }
+
+.chart-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #000000; 
+    font-family: 'Calibri', sans-serif;
+    
+  }
+  

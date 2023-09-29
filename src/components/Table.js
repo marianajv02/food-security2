@@ -7,8 +7,6 @@ import 'ag-grid-community/styles/ag-theme-alpine.css';
 import './Table.css';
 
 const Table = ({ countryData, level1Data, level2Data, selectedYear, selectedMonth }) => {
-  console.log('table', countryData);
-  // se esta duplicando la tabla cuando hay undefined data, hay que hacer algo para reiniciarla cada vez que cambie selected year o selected month
    
   const [columnDefs, setColumnDefs] = useState([
     { field: 'Country', rowgroup: true, hide: false, headerClass: 'custom-header', cellClass: 'custom-cell-bold', width: 100 },
@@ -46,8 +44,10 @@ const Table = ({ countryData, level1Data, level2Data, selectedYear, selectedMont
     const rowData = countryData.features
     .map((feature) => formatFeature(feature, selectedYear, selectedMonth))
     .filter((row) => row.Population !== 'Data not available'); 
+    console.log(rowData, 'rowdata');
 
     const totalRow = {
+      
       Country: 'Total',
       Population: formatNumber(calculateColumnSum('Population', rowData)),
       'Phase 1': formatNumber(calculateColumnSum('Phase 1', rowData)),
@@ -63,7 +63,8 @@ const Table = ({ countryData, level1Data, level2Data, selectedYear, selectedMont
   
       rowClass: 'total-row',
     };
-
+    console.log(rowData,'rowdata after totalrow');
+    console.log('totalRow', totalRow);
     const allRows = [...rowData, totalRow];
 
     setTableData(allRows); // Update tableData with new data
@@ -89,7 +90,7 @@ const Table = ({ countryData, level1Data, level2Data, selectedYear, selectedMont
     const filteredRows = data[rowLevel]
       .filter((feature) => feature[columnToCheck] === cellValue)
     if(clickedRowData.expanded) {
-      // collapse logic ... en cada if voy a tener que hacer un filter y un map 
+     
       clickedRowData.expanded = false;
       api.applyTransaction({
         remove: filteredRows.map((row) => ({ Key: row.Key }))
@@ -131,8 +132,11 @@ function calculatePercentage(value, total) {
 }
 
 function calculateColumnSum(columnName, rowData) {
-  return rowData.reduce((total, row) => total + !row.excludeFromTotals ? parseFloat(row[columnName].replace(/,/g, '')) : 0 || 0, 0);
+  const columnValues = rowData.map(row => parseFloat(row[columnName].replace(/,/g, '')));
+  const total = columnValues.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+  return total;
 }
+
 
 function formatFeature(feature, selectedYear, selectedMonth)  {
   let month;
@@ -143,7 +147,6 @@ function formatFeature(feature, selectedYear, selectedMonth)  {
     month=`0${selectedMonth}`;
   }
   const populationData = feature.properties[`POP-${selectedYear}-${month}`];
-  console.log(month);
 
   if (populationData === undefined) {
     let month;

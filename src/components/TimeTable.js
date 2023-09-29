@@ -1,43 +1,39 @@
-{/*import React from "react";
+import React from "react";
 import "chartjs-adapter-date-fns";
 import { Line } from "react-chartjs-2";
-import {Chart, LinearScale, PointElement, Tooltip, Legend, TimeScale, registerables} from "chart.js"; 
+import { Chart, LinearScale, PointElement, Tooltip, Legend, TimeScale, registerables } from "chart.js";
 import './TimeTable.css';
 Chart.register(...registerables);
 
-
 const TimeTable = ({ countryData }) => {
+  let uniqueYearsAndMonths = [];
+  let yearsAndMonths = [];
+  let chartData = [];
 
-  let uniqueYearsAndMonths = []; // Declare it at a higher scope
-  let yearsAndMonths=[];
-  let chartData=[];
-
-  if (!countryData || !countryData.features) {
-    return null; // Render nothing while data is being fetched
+  if (!countryData || !countryData.features || !countryData.features[0] || !countryData.features[0].properties){
+    return null;
   } else {
     uniqueYearsAndMonths = Object.keys(countryData.features[0].properties)
       .filter(key => key.startsWith("POP-"))
-      .map(key => key.slice(4)); // Remove "POP-" prefix
+      .map(key => key.slice(4));
     yearsAndMonths = [...new Set(uniqueYearsAndMonths)];
     chartData = yearsAndMonths.map(yearMonth => ({
-        yearMonth,
-        data: [],
-      }));
+      yearMonth,
+      data: [],
+    }));
 
-      countryData.features.forEach(feature => {
-        const properties = feature.properties;
-        yearsAndMonths.forEach(yearMonth => {
-          const population = properties[`POP-${yearMonth}`] || null; 
-          const insec_pop= properties[`PH3:5-${yearMonth}`] || null;
-          const insec_pop_perc= calculatePercentage(insec_pop,population)
-          chartData.find(dataItem => dataItem.yearMonth === yearMonth).data.push({
-            country: properties.Country,
-            population: insec_pop_perc,
-          });
+    countryData.features.forEach(feature => {
+      const properties = feature.properties;
+      yearsAndMonths.forEach(yearMonth => {
+        const population = properties[`POP-${yearMonth}`] || null;
+        const insec_pop = properties[`PH3:5-${yearMonth}`] || null;
+        const insec_pop_perc = calculatePercentage(insec_pop, population);
+        chartData.find(dataItem => dataItem.yearMonth === yearMonth).data.push({
+          country: properties.Country,
+          population: insec_pop_perc,
         });
       });
-
-
+    });
   }
 
   const lineColors = [
@@ -57,34 +53,39 @@ const TimeTable = ({ countryData }) => {
     'indigo',
     'maroon',
     'violet'
-
   ];
-  
-  
-  
+
   const chartLabels = yearsAndMonths;
-  const chartDatasets = chartData.map((dataItem, index) => ({
-    label: dataItem.yearMonth,
-    data: dataItem.data.map(item => item.population),
-    fill: false,
-    borderColor: lineColors[index % lineColors.length], // Cycle through colors
-  }));
 
+  const chartDatasets = [];
 
-  const chartDatas = {
-    labels: chartLabels, // X-axis labels (years and months)
-    datasets: chartDatasets, // Data for the lines (population data)
-    
+  const countries = Array.from(new Set(chartData[0].data.map(item => item.country)));
+
+  countries.forEach((country, index) => {
+    const dataForCountry = chartData.map(dataItem => {
+      const countryDataItem = dataItem.data.find(item => item.country === country);
+      return countryDataItem ? parseFloat(countryDataItem.population) : null;
+    });
+
+    chartDatasets.push({
+      label: country,
+      data: dataForCountry,
+      fill: false,
+      borderColor: lineColors[index % lineColors.length],
+    });
+  });
+
+  const chartDataFinal = {
+    labels: chartLabels,
+    datasets: chartDatasets,
   };
-
-  console.log(chartDatasets);
 
   const chartOptions = {
     scales: {
       x: {
         type: "time",
         time: {
-          unit: "month", // Customize the time unit as needed
+          unit: "month",
           stepSize: 4,
         },
         title: {
@@ -102,26 +103,23 @@ const TimeTable = ({ countryData }) => {
     plugins: {
       legend: {
         display: true,
-        position: "top", // Customize legend position as needed
+        position: "top",
       },
     },
   };
 
-  
-  
-
   return (
+    
     <div className="timetable-container">
-    {/* Render the Line chart 
-    <Line data={chartDatas} options={chartOptions} />
-  </div>
+        <div className="chart-title">Percentage of food insecure people over time. Phases 3 to 5.</div>
+      <Line data={chartDataFinal} options={chartOptions} />
+    </div>
   );
 };
-
 
 function calculatePercentage(value, total) {
     const percentage = (value / total) * 100;
     return percentage.toFixed(2); // Displaying percentage with two decimal places
   }
 
-export default TimeTable;*/}
+export default TimeTable;

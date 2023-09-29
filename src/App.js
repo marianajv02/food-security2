@@ -81,7 +81,7 @@ export default function App() {
       <Table countryData={filteredData.filteredCountryData} level1Data={filteredData.filteredLevel1Data} level2Data={filteredData.filteredLevel2Data} onChangeYear={handleYearChange} selectedYear={selectedYear} onChangeMonth={handleMonthChange} selectedMonth={selectedMonth}/>
   </div>
   <div></div>
-     {/* <div className='container'><TimeTable countryData={countryData}></TimeTable> </div>*/}
+      <div className='container'><TimeTable countryData={filteredData.filteredCountryData}></TimeTable> </div>
 
 </div>
 
