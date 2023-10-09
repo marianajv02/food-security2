@@ -13,9 +13,9 @@ function MapView({ selectedYear, selectedMonth, onChangeRegion, countryProjectAr
   console.log(countryData, 'mapview comp');
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const [lng, setLng] = useState(0);
-  const [lat, setLat] = useState(17);
-  const [zoom, setZoom] = useState(3.4);
+  const [lng, setLng] = useState(-10);
+  const [lat, setLat] = useState(18);
+  const [zoom, setZoom] = useState(4.2);
   const [hoveredRegion, setHoveredRegion] = useState(null);
   const features = countryProjectArray.map((project) => {
     const matchingCoordinate = countryCoordinates.find(({ country }) => country === project.country);
@@ -414,17 +414,29 @@ function MapView({ selectedYear, selectedMonth, onChangeRegion, countryProjectAr
     const yearValue = parseInt(selectedYear);
     const monthValue = parseInt(selectedMonth);
     const propertyExists = countryData.features.some((feature) => {
-      const propertyName = `CLAS-${yearValue}-0${monthValue}`;
+      let propertyName;
+      if (monthValue === 11) {
+        propertyName = `CLAS-${yearValue}-${monthValue}`;
+      } else {
+        propertyName = `CLAS-${yearValue}-0${monthValue}`;
+      }
+
       return propertyName in feature.properties;
     });
     
     if (propertyExists) {
+      let propertyName;
+      if (monthValue === 11) {
+        propertyName = `CLAS-${yearValue}-${monthValue}`;
+      } else {
+        propertyName = `CLAS-${yearValue}-0${monthValue}`;
+      }
       return [
         'case',
-        ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 1], '#53ca57',
-        ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 2], '#ffe252',
-        ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 3], '#fa890f',
-        ['==', ['number', ['get', `CLAS-${yearValue}-0${monthValue}`]], 4], '#eb3333',
+        ['==', ['number', ['get', propertyName]], 1], '#d3f3d4',
+        ['==', ['number', ['get', propertyName]], 2], '#ffe252',
+        ['==', ['number', ['get', propertyName]], 3], '#fa890f',
+        ['==', ['number', ['get', propertyName]], 4], '#eb3333',
         '#ffffff'
       ]
     } else {
@@ -438,16 +450,28 @@ function MapView({ selectedYear, selectedMonth, onChangeRegion, countryProjectAr
     const yearValue = parseInt(selectedYear);
     const monthValue = parseInt(selectedMonth);
     const propertyExists = protocoleData.features.some((feature) => {
-      const propertyName = `PROT-${yearValue}-0${monthValue}`;
-      console.log(propertyName);
+      let propertyName;
+      if (monthValue === 11) {
+        propertyName = `PROT-${yearValue}-${monthValue}`;
+      } else {
+        propertyName = `PROT-${yearValue}-0${monthValue}`;
+      }
+
       return propertyName in feature.properties;
       
     });
       
     if (propertyExists) {
+      let propertyName;
+      if (monthValue === 11) {
+        propertyName = `PROT-${yearValue}-${monthValue}`;
+      } else {
+        propertyName = `PROT-${yearValue}-0${monthValue}`;
+      }
+
       return [
         'case',
-        ['==', ['number', ['get', `PROT-${yearValue}-0${monthValue}`]], 1],'stripes',
+        ['==', ['number', ['get', propertyName]], 1],'stripes',
         'transparent' 
       ];
     } else {

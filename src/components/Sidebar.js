@@ -30,34 +30,40 @@ function Sidebar({ countryData, level1Data, level2Data, regionInfo, selectedYear
   }
 
   const properties = foundRow ? foundRow.properties : {};
-
+  let month;
+  if(selectedMonth==11){
+    month='11';
+  }
+  else{
+    month=`0${selectedMonth}`;
+  }
   const Name= properties['Name_2'];
-  const Population = formatNumber(properties[`POP-${selectedYear}-0${selectedMonth}`]);
-  const Phase1 = formatNumber(properties[`PH1-${selectedYear}-0${selectedMonth}`]);
+  const Population = formatNumber(properties[`POP-${selectedYear}-${month}`]);
+  const Phase1 = formatNumber(properties[`PH1-${selectedYear}-${month}`]);
   const Percent1 = calculatePercentage(
-    parseFloat(properties[`PH1-${selectedYear}-0${selectedMonth}`]),
-    parseFloat(properties[`POP-${selectedYear}-0${selectedMonth}`])
+    parseFloat(properties[`PH1-${selectedYear}-${month}`]),
+    parseFloat(properties[`POP-${selectedYear}-${month}`])
   );
 
-  const Phase2 = formatNumber(properties[`PH2-${selectedYear}-0${selectedMonth}`]);
+  const Phase2 = formatNumber(properties[`PH2-${selectedYear}-${month}`]);
   const Percent2 = calculatePercentage(
-    parseFloat(properties[`PH2-${selectedYear}-0${selectedMonth}`]),
-    parseFloat(properties[`POP-${selectedYear}-0${selectedMonth}`])
+    parseFloat(properties[`PH2-${selectedYear}-${month}`]),
+    parseFloat(properties[`POP-${selectedYear}-${month}`])
   );
-  const Phase3 = formatNumber(properties[`PH3-${selectedYear}-0${selectedMonth}`]);
+  const Phase3 = formatNumber(properties[`PH3-${selectedYear}-${month}`]);
   const Percent3 = calculatePercentage(
-    parseFloat(properties[`PH3-${selectedYear}-0${selectedMonth}`]),
-    parseFloat(properties[`POP-${selectedYear}-0${selectedMonth}`])
+    parseFloat(properties[`PH3-${selectedYear}-${month}`]),
+    parseFloat(properties[`POP-${selectedYear}-${month}`])
   );
-  const Phase4 = formatNumber(properties[`PH4-${selectedYear}-0${selectedMonth}`]);
+  const Phase4 = formatNumber(properties[`PH4-${selectedYear}-${month}`]);
   const Percent4 = calculatePercentage(
-    parseFloat(properties[`PH4-${selectedYear}-0${selectedMonth}`]),
-    parseFloat(properties[`POP-${selectedYear}-0${selectedMonth}`])
+    parseFloat(properties[`PH4-${selectedYear}-${month}`]),
+    parseFloat(properties[`POP-${selectedYear}-${month}`])
   );
-  const Phase5 = formatNumber(properties[`PH5-${selectedYear}-0${selectedMonth}`]);
+  const Phase5 = formatNumber(properties[`PH5-${selectedYear}-${month}`]);
   const Percent5 = calculatePercentage(
-    parseFloat(properties[`PH5-${selectedYear}-0${selectedMonth}`]),
-    parseFloat(properties[`POP-${selectedYear}-0${selectedMonth}`])
+    parseFloat(properties[`PH5-${selectedYear}-${month}`]),
+    parseFloat(properties[`POP-${selectedYear}-${month}`])
   );
 
   return (
@@ -65,7 +71,7 @@ function Sidebar({ countryData, level1Data, level2Data, regionInfo, selectedYear
       <div className='sidebar-container'>
         <div className='logo'>
         <img src={process.env.PUBLIC_URL + '/images/family_icon.jpg'} alt='Family Icon' />
-          <span className='logo-text'>Food and nutrition situation {selectedYear} </span> {/* adding selected month as trial*/}
+          <span className='logo-text'>Food and nutrition situation {selectedYear} </span> 
         </div>
 
         <div className='region-info'>

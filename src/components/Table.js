@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import App from '../App';
 import Timebar from './Timebar';
@@ -7,10 +7,9 @@ import 'ag-grid-community/styles/ag-theme-alpine.css';
 import './Table.css';
 
 const Table = ({ countryData, level1Data, level2Data, selectedYear, selectedMonth }) => {
-  // console.log(selectedMonth);
-
+   
   const [columnDefs, setColumnDefs] = useState([
-    { field: 'Country', rowgroup: true, hide: false, headerClass: 'custom-header', width: 100 },
+    { field: 'Country', rowgroup: true, hide: false, headerClass: 'custom-header', cellClass: 'custom-cell-bold', width: 100 },
     { field: 'Level1', rowgroup: true, hide: false, headerClass: 'custom-header', width: 100 },
     { field: 'Level2', rowgroup: true, hide: false, headerClass: 'custom-header', width: 100 },
     { field: 'Population', headerClass: 'custom-header', width: 120 },
@@ -24,7 +23,8 @@ const Table = ({ countryData, level1Data, level2Data, selectedYear, selectedMont
   ]);
   const getRowId = (params) => params.data.Key;
   ///
-  let tableData = [];
+  
+  const [tableData, setTableData] = useState([]);;
   const [expandedCountry, setExpandedCountry] = useState(null);
   const handleExpandButtonClick = (country) => {
     if (expandedCountry === country) {
@@ -32,41 +32,53 @@ const Table = ({ countryData, level1Data, level2Data, selectedYear, selectedMont
     } else {
       setExpandedCountry(country);
     }
+    
   };
   ///
-  if (!countryData || !countryData.features) {
-    return null; // Render nothing while data is being fetched
-  }
+  useEffect(() => {
+    
+    if (!countryData || !countryData.features) {
+      return; // Render nothing while data is being fetched
+    }
 
-  const rowData = countryData.features.map((feature) => formatFeature(feature, selectedYear, selectedMonth));
+    const rowData = countryData.features
+    .map((feature) => formatFeature(feature, selectedYear, selectedMonth))
+    .filter((row) => row.Population !== 'Data not available'); 
+    console.log(rowData, 'rowdata');
 
-  const totalRow = {
-    Country: 'Total',
-    Population: formatNumber(calculateColumnSum('Population', rowData)),
-    'Phase 1': formatNumber(calculateColumnSum('Phase 1', rowData)),
-    'Phase 2': formatNumber(calculateColumnSum('Phase 2', rowData)),
-    'Phase 3': formatNumber(calculateColumnSum('Phase 3', rowData)),
-    'Phase 4': formatNumber(calculateColumnSum('Phase 4', rowData)),
-    'Phase 5': formatNumber(calculateColumnSum('Phase 5', rowData)),
-    'Phase 3-5': formatNumber(calculateColumnSum('Phase 3-5', rowData)),
-    '%': calculatePercentage(
-      calculateColumnSum('Phase 3-5', rowData),
-      calculateColumnSum('Population', rowData)
-    ),
+    const totalRow = {
+      
+      Country: 'Total',
+      Population: formatNumber(calculateColumnSum('Population', rowData)),
+      'Phase 1': formatNumber(calculateColumnSum('Phase 1', rowData)),
+      'Phase 2': formatNumber(calculateColumnSum('Phase 2', rowData)),
+      'Phase 3': formatNumber(calculateColumnSum('Phase 3', rowData)),
+      'Phase 4': formatNumber(calculateColumnSum('Phase 4', rowData)),
+      'Phase 5': formatNumber(calculateColumnSum('Phase 5', rowData)),
+      'Phase 3-5': formatNumber(calculateColumnSum('Phase 3-5', rowData)),
+      '%': calculatePercentage(
+        calculateColumnSum('Phase 3-5', rowData),
+        calculateColumnSum('Population', rowData)
+      ),
+  
+      rowClass: 'total-row',
+    };
+    console.log(rowData,'rowdata after totalrow');
+    console.log('totalRow', totalRow);
+    const allRows = [...rowData, totalRow];
 
-    rowClass: 'total-row',
-  };
+    setTableData(allRows); // Update tableData with new data
+  }, [countryData, selectedYear, selectedMonth]);
 
 
-  const allRows = [...rowData, totalRow];
-
-  ///
-  tableData =  tableData.length === 0 ? allRows : tableData;
+  
   function rowClick(clickEvent) { // llamar cuando se pique el boton o el nombre
     const clickedRowData = clickEvent.data;
     const api = clickEvent.api;
     const rowLevel = clickedRowData.level || 0;
     const columnsToCheck = ['Country', 'Level1'];
+
+    
     
     if (rowLevel === 2) {
       return;
@@ -78,7 +90,7 @@ const Table = ({ countryData, level1Data, level2Data, selectedYear, selectedMont
     const filteredRows = data[rowLevel]
       .filter((feature) => feature[columnToCheck] === cellValue)
     if(clickedRowData.expanded) {
-      // collapse logic ... en cada if voy a tener que hacer un filter y un map 
+     
       clickedRowData.expanded = false;
       api.applyTransaction({
         remove: filteredRows.map((row) => ({ Key: row.Key }))
@@ -120,13 +132,30 @@ function calculatePercentage(value, total) {
 }
 
 function calculateColumnSum(columnName, rowData) {
-  return rowData.reduce((total, row) => total + !row.excludeFromTotals ? parseFloat(row[columnName].replace(/,/g, '')) : 0 || 0, 0);
+  const columnValues = rowData.map(row => parseFloat(row[columnName].replace(/,/g, '')));
+  const total = columnValues.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+  return total;
 }
 
+
 function formatFeature(feature, selectedYear, selectedMonth)  {
-  const populationData = feature.properties[`POP-${selectedYear}-0${selectedMonth}`];
+  let month;
+  if(selectedMonth==11){
+    month='11';
+  }
+  else{
+    month=`0${selectedMonth}`;
+  }
+  const populationData = feature.properties[`POP-${selectedYear}-${month}`];
 
   if (populationData === undefined) {
+    let month;
+    if(selectedMonth==11){
+      month='11';
+    }
+    else{
+      month=`0${selectedMonth}`;
+    }
     // Data is not available for this combination, return a message
     return {
       Country: feature.properties['Country'],
@@ -149,14 +178,14 @@ function formatFeature(feature, selectedYear, selectedMonth)  {
     Level1: getNameByLevel(feature, 1),
     Level2: getNameByLevel(feature, 2),
     Population: formatNumber(populationData),
-    'Phase 1': formatNumber(feature.properties[`PH1-${selectedYear}-0${selectedMonth}`]),
-    'Phase 2': formatNumber(feature.properties[`PH2-${selectedYear}-0${selectedMonth}`]),
-    'Phase 3': formatNumber(feature.properties[`PH3-${selectedYear}-0${selectedMonth}`]),
-    'Phase 4': formatNumber(feature.properties[`PH4-${selectedYear}-0${selectedMonth}`]),
-    'Phase 5': formatNumber(feature.properties[`PH5-${selectedYear}-0${selectedMonth}`]),
-    'Phase 3-5': formatNumber(feature.properties[`PH3:5-${selectedYear}-0${selectedMonth}`]),
+    'Phase 1': formatNumber(feature.properties[`PH1-${selectedYear}-${month}`]),
+    'Phase 2': formatNumber(feature.properties[`PH2-${selectedYear}-${month}`]),
+    'Phase 3': formatNumber(feature.properties[`PH3-${selectedYear}-${month}`]),
+    'Phase 4': formatNumber(feature.properties[`PH4-${selectedYear}-${month}`]),
+    'Phase 5': formatNumber(feature.properties[`PH5-${selectedYear}-${month}`]),
+    'Phase 3-5': formatNumber(feature.properties[`PH3:5-${selectedYear}-${month}`]),
     '%': calculatePercentage(
-      feature.properties[`PH3:5-${selectedYear}-0${selectedMonth}`],
+      feature.properties[`PH3:5-${selectedYear}-${month}`],
       populationData
     ),
     Key: feature.properties.Key

@@ -6,7 +6,7 @@
   margin-top: 20px;
   position: absolute;
   left:25%;
-  top:50%;
+  top:0%;
 
 }
 
@@ -17,8 +17,12 @@
   
 }
 
+.custom-cell-bold{
+  font-weight: bold;
+}
+
 .custom-header1 {
-  background-color: #53ca57 ;
+  background-color: #d3f3d4;
   color: rgb(0, 0, 0);
   width:20px;
   
